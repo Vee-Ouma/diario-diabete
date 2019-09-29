@@ -1,10 +1,9 @@
-package com.example.diario_diabete.views;
+package it.chiarani.diario_diabete.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import it.chiarani.diario_diabete.R;
 
 import android.os.Bundle;
-
-import com.example.diario_diabete.R;
 
 public class MainActivity extends AppCompatActivity {
 

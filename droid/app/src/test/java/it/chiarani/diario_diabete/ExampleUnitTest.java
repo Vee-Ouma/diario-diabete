@@ -1,4 +1,4 @@
-package com.example.diario_diabete;
+package it.chiarani.diario_diabete;
 
 import org.junit.Test;
 

@@ -1,4 +1,5 @@
-package com.example.diario_diabete.views;
+package it.chiarani.diario_diabete.views;
+
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.example.diario_diabete;
+package it.chiarani.diario_diabete;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.diario_diabete", appContext.getPackageName());
+        assertEquals("it.chiarani.diario_diabete", appContext.getPackageName());
     }
 }
