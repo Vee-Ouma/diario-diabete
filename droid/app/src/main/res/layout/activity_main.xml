@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:id="@+id/bottomAppBar"
+                app:navigationIcon="@drawable/ic_menu"
                 style="@style/Widget.MaterialComponents.BottomAppBar"
                 android:layout_gravity="bottom" />
 
