@@ -32,6 +32,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding.test.setText("ciao");
+//        binding.test.setText("ciao");
     }
 }

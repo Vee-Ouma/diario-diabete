@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">diario-diabete</string>
+    <string name="LoginActivity_title">Diaro del Diabete</string>
 </resources>
