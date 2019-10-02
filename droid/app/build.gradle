@@ -20,6 +20,10 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -37,6 +41,22 @@ dependencies {
     // Firebase SDK for Crashlytics
     // https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0&platform=android
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.1.0"
+
+    // RXJAVA + RXANDROID
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.8"
+
+    // Room
+    implementation 'androidx.room:room-runtime:2.2.0-rc01'
+    implementation 'androidx.room:room-rxjava2:2.2.0-rc01'
+    annotationProcessor "androidx.room:room-compiler:2.2.0-rc01"
+
+    // GSON for Converter for ROOM
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 apply plugin: 'com.google.gms.google-services'

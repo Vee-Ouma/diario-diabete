@@ -1,28 +1,23 @@
 package it.chiarani.diario_diabete.views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
-import it.chiarani.diario_diabete.R;
-import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
-import it.chiarani.diario_diabete.fragments.BottomNavigationDrawerFragment;
-
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
-import com.google.android.material.navigation.NavigationView;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
+import it.chiarani.diario_diabete.R;
+import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
+import it.chiarani.diario_diabete.db.Injection;
+import it.chiarani.diario_diabete.fragments.BottomNavigationDrawerFragment;
+import it.chiarani.diario_diabete.viewmodels.UserViewModel;
+import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
 
 public class MainActivity extends BaseActivity {
 
-    ActivityMainBinding binding;
-
-    // https://medium.com/over-engineering/hands-on-with-material-components-for-android-bottom-app-bar-28835a1feb82
+    private ActivityMainBinding binding;
+    private ViewModelFactory mViewModelFactory;
+    private UserViewModel mUserViewModel;
 
     @Override
     protected int getLayoutID() {
@@ -36,23 +31,16 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setViewModel() {
-
+        mViewModelFactory = Injection.provideViewModelFactory(this);
+        mUserViewModel    = ViewModelProviders.of(this, mViewModelFactory).get(UserViewModel.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       this.setSupportActionBar(binding.bottomAppBar);
-
-        binding.bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open bottom sheet
-                BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
-                bottomSheetDialogFragment.show(getSupportFragmentManager(), "Bottom Sheet Dialog Fragment");
-            }
-        });
+        this.setSupportActionBar(binding.bottomAppBar);
+        setBottomAppBarHamburgerListener();
     }
 
     @Override
@@ -62,4 +50,18 @@ public class MainActivity extends BaseActivity {
         return true;
     }
 
+    private void setBottomAppBarHamburgerListener() {
+        binding.bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Open bottom sheet
+                BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
+                bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
+            }
+        });
+    }
+
 }
+
+
+// https://medium.com/over-engineering/hands-on-with-material-components-for-android-bottom-app-bar-28835a1feb82
