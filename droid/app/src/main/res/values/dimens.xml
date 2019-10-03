@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="LoginActivity_txt_Size">35sp</dimen>
+
+    <!-- ACTIVITY DATA READER -->
+    <dimen name="activityDataReaderMT">50dp</dimen>
+
+    <dimen name="activityDataReaderButtonTimePickerTextSize">24sp</dimen>
+    <dimen name="activityDataReaderButtonTimePickerWidth">190dp</dimen>
+    <dimen name="activityDataReaderButtonTimeSmallPickerWidth">150dp</dimen>
+    <dimen name="activityDataReaderButtonTimePickerHeight">60dp</dimen>
+    <dimen name="activityDataReaderButtonTimePickerIconPaddingstart">16dp</dimen>
+
+    <dimen name="activityDataReaderTextSize">28sp</dimen>
+
+    <dimen name="activityDataReaderInputMT">25dp</dimen>
+    <dimen name="activityDataReaderInputWidth">100dp</dimen>
+    <dimen name="activityDataReaderInputHeight">45dp</dimen>
+    <dimen name="activityDataReaderInputTextSize">24sp</dimen>
+    <dimen name="activityDataReaderInputPadding">32dp</dimen>
 </resources>
