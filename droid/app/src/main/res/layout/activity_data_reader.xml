@@ -54,11 +54,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.google.android.material.textview.MaterialTextView
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ActivityDataReaderInputRead"
             android:layout_marginTop="@dimen/activityDataReaderInputMT"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/activityDataReaderInputHeight"
-            android:hint="22,34"
+            android:hint="00,00"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/activityDataReaderInputTextSize"
             android:fontFamily="@font/product_sans_bold"
             android:background="@drawable/background_picker_button"
@@ -68,6 +70,45 @@
             app:layout_constraintTop_toBottomOf="@id/ActivityDataReaderTitleReading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ActivityDataReaderTitleFasting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activityDataReaderMT"
+            android:fontFamily="@font/product_sans_bold"
+            android:textSize="@dimen/activityDataReaderTextSize"
+            android:text="Digiuno?"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintTop_toBottomOf="@id/ActivityDataReaderInputRead"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ActivityDataReaderButtonFastingNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activityDataReaderInputMT"
+            android:background="@drawable/background_red_button"
+            android:textSize="@dimen/activityDataReaderButtonsFastingTextSize"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="no"
+            app:layout_constraintTop_toBottomOf="@id/ActivityDataReaderTitleFasting"
+            app:layout_constraintEnd_toStartOf="@id/ActivityDataReaderButtonFastingYes"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ActivityDataReaderButtonFastingYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activityDataReaderInputMT"
+            android:background="@drawable/background_green_button"
+            android:textSize="@dimen/activityDataReaderButtonsFastingTextSize"
+            android:fontFamily="@font/product_sans_regular"
+            android:text="si"
+            app:layout_constraintTop_toBottomOf="@id/ActivityDataReaderTitleFasting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ActivityDataReaderButtonFastingNo"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
