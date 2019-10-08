@@ -96,7 +96,7 @@
             android:gravity="start|center_vertical"
             android:hint="@string/activityDataReaderGlicemiaInput"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="6"
             android:maxLines="1"
             android:minLines="1"
             android:paddingStart="@dimen/activityDataReaderInputPadding"
@@ -170,7 +170,7 @@
             app:layout_constraintHorizontal_bias="0.623"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityDataReaderTitleEatingFrom3" />
+            app:layout_constraintTop_toBottomOf="@+id/activityDataReaderSwitchFasting" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/activityDataReaderTitleEatingFrom2"
