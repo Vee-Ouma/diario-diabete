@@ -8,19 +8,16 @@ import java.util.List;
 
 import androidx.room.TypeConverter;
 import it.chiarani.diario_diabete.db.persistence.entities.DiabeteReadingEntity;
+import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 
-/**
- * convert all class to json
- * Guide: https://android.jlelse.eu/room-persistence-library-typeconverters-and-database-migration-3a7d68837d6c
- */
-public class DiabeteReadingEntityConverter {
+public class TagsConverter {
 
     /**
      * Convert from json to DiabeteReadingEntity class
      */
     @TypeConverter
-    public static List<DiabeteReadingEntity> fromString(String value) {
-        Type listType = new TypeToken<List<DiabeteReadingEntity>>() {}.getType();
+    public static List<TagsEntity> fromString(String value) {
+        Type listType = new TypeToken<List<TagsEntity>>() {}.getType();
         return new Gson().fromJson(value, listType);
     }
 
@@ -28,8 +25,8 @@ public class DiabeteReadingEntityConverter {
      * Convert DiabeteReadingEntity class to json
      */
     @TypeConverter
-    public static String fromDiabeteReadingEntity(List<DiabeteReadingEntity> read) {
+    public static String fromTagsEntity(List<TagsEntity> tags) {
         Gson gson = new Gson();
-        return gson.toJson(read);
+        return gson.toJson(tags);
     }
 }

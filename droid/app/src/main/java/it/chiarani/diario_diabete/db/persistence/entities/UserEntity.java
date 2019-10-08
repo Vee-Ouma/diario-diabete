@@ -18,8 +18,9 @@ public class UserEntity implements User {
     private int weight;
     private boolean sex;
     private int age;
+    private List<TagsEntity> availableTags;
 
-    public UserEntity(List<DiabeteReadingEntity> readings, String name, String surname, int height, int weight, boolean sex, int age) {
+    public UserEntity(List<DiabeteReadingEntity> readings, String name, String surname, int height, int weight, boolean sex, int age, List<TagsEntity> availableTags) {
         this.readings = readings;
         this.name = name;
         this.surname = surname;
@@ -27,6 +28,7 @@ public class UserEntity implements User {
         this.weight = weight;
         this.sex = sex;
         this.age = age;
+        this.availableTags = availableTags;
     }
 
     @Override
@@ -107,5 +109,15 @@ public class UserEntity implements User {
     @Override
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public List<TagsEntity> getAvailableTags() {
+        return availableTags;
+    }
+
+    @Override
+    public void setAvailableTags(List<TagsEntity> availableTags) {
+        this.availableTags = availableTags;
     }
 }

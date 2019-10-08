@@ -3,6 +3,7 @@ package it.chiarani.diario_diabete.models;
 import java.util.List;
 
 import it.chiarani.diario_diabete.db.persistence.entities.DiabeteReadingEntity;
+import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 
 public interface User {
 
@@ -37,4 +38,8 @@ public interface User {
     int getAge();
 
     void setAge(int age);
+
+    public List<TagsEntity> getAvailableTags();
+
+    public void setAvailableTags(List<TagsEntity> availableTags);
 }

@@ -1,5 +1,9 @@
 package it.chiarani.diario_diabete.models;
 
+import java.util.List;
+
+import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
+
 public interface DiabeteReading {
 
     /**
@@ -18,25 +22,37 @@ public interface DiabeteReading {
      * Return the timestamp of when the reading is created
      * @return the timestamp of when the reading is created
      */
-    long getCreatedAt();
+    long getTimestamp();
 
     /**
      * Set the timestamp of when the reading is created
-     * @param createdAt the timestamp of when the reading is created
+     * @param timestamp the timestamp of when the reading is created
      */
-    void setCreatedAt(long createdAt);
+    void setTimestamp(long timestamp);
 
     /**
      * Return the time when the user read the value
      * @return the time when the user read the value
      */
-    long getDatetime();
+    long getReadingDate();
 
     /**
      * Set the time on when the user read the value
-     * @param datetime the time on when the user read the value
+     * @param readingDate the time on when the user read the value
      */
-    void setDatetime(long datetime);
+    void setReadingDate(long readingDate);
+
+    /**
+     * Return the timestamp of when the reading is created
+     * @return the timestamp of when the reading is created
+     */
+    long getReadingHour();
+
+    /**
+     * Set the timestamp of when the reading is created
+     * @param timestamp the timestamp of when the reading is created
+     */
+    void setReadingHour(long timestamp);
 
     /**
      * Return true if during the reading value the user is fasting. False otherwise.
@@ -72,4 +88,8 @@ public interface DiabeteReading {
      * @param notes extra notes to the reading
      */
     void setNotes(String notes);
+
+    public List<TagsEntity> getTags();
+
+    public void setTags(List<TagsEntity> tags);
 }

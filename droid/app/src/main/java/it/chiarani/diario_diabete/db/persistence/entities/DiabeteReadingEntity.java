@@ -1,5 +1,7 @@
 package it.chiarani.diario_diabete.db.persistence.entities;
 
+import java.util.List;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -13,12 +15,13 @@ public class DiabeteReadingEntity implements DiabeteReading {
      */
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private long createdAt;
-    private long datetime;
+    private long timestamp;
+    private long readingDate;
+    private long readingHour;
     private boolean isFasting;
     private float value;
     private String notes;
-
+    private List<TagsEntity> tags;
 
     /**
      * Empty constructor
@@ -28,16 +31,35 @@ public class DiabeteReadingEntity implements DiabeteReading {
 
     }
 
-    /**
-     * Full cunstructor
-     */
-    public DiabeteReadingEntity(long createdAt, long datetime, boolean isFasting, float value, String notes) {
-        this.createdAt = createdAt;
-        this.datetime = datetime;
+    public DiabeteReadingEntity(int id, long timestamp, long readingDate, long readingHour, boolean isFasting, float value, String notes, List<TagsEntity> tags) {
+        this.id = id;
+        this.timestamp = timestamp;
+        this.readingDate = readingDate;
+        this.readingHour = readingHour;
         this.isFasting = isFasting;
         this.value = value;
         this.notes = notes;
+        this.tags = tags;
     }
+
+    public List<TagsEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagsEntity> tags) {
+        this.tags = tags;
+    }
+
+    @Override
+    public long getReadingHour() {
+        return readingHour;
+    }
+
+    @Override
+    public void setReadingHour(long readingHour) {
+        this.readingHour = readingHour;
+    }
+
 
     @Override
     public int getId() {
@@ -50,23 +72,23 @@ public class DiabeteReadingEntity implements DiabeteReading {
     }
 
     @Override
-    public long getCreatedAt() {
-        return createdAt;
+    public long getTimestamp() {
+        return timestamp;
     }
 
     @Override
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
-    public long getDatetime() {
-        return datetime;
+    public long getReadingDate() {
+        return readingDate;
     }
 
     @Override
-    public void setDatetime(long datetime) {
-        this.datetime = datetime;
+    public void setReadingDate(long readingDate) {
+        this.readingDate = readingDate;
     }
 
     @Override

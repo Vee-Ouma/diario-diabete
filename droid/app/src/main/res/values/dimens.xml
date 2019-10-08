@@ -2,23 +2,48 @@
 <resources>
     <dimen name="LoginActivity_txt_Size">35sp</dimen>
 
-    <!-- ACTIVITY DATA READER -->
-    <dimen name="activityDataReaderMT">50dp</dimen>
+    <dimen name="tileTextSize">18sp</dimen>
 
-    <dimen name="activityDataReaderButtonTimePickerTextSize">24sp</dimen>
-    <dimen name="activityDataReaderButtonTimePickerWidth">190dp</dimen>
+    <dimen name="main16">16dp</dimen>
+
+    <!-- ACTIVITY DATA READER -->
+    <dimen name="activityDataReaderMT">40dp</dimen>
+    <dimen name="activityDataReaderHeaderHeight">80dp</dimen>
+    <dimen name="activityDataReaderTimeButtonsHeight">50dp</dimen>
+    <dimen name="activityDataReaderInputTextSize">25sp</dimen>
+    <dimen name="activityDataReaderSliderTextSize">14sp</dimen>
+    <dimen name="activityDataReaderSliderHeight">30dp</dimen>
+
+    <dimen name="activityDataReaderButtonTimePickerTextSize">16sp</dimen>
+    <dimen name="activityDataReaderButtonTimePickerWidth">150dp</dimen>
     <dimen name="activityDataReaderButtonTimeSmallPickerWidth">150dp</dimen>
     <dimen name="activityDataReaderButtonTimePickerHeight">60dp</dimen>
     <dimen name="activityDataReaderButtonTimePickerIconPaddingstart">16dp</dimen>
 
-    <dimen name="activityDataReaderTextSize">28sp</dimen>
+    <dimen name="activityDataReaderTextSize">25sp</dimen>
 
-    <dimen name="activityDataReaderInputMT">25dp</dimen>
-    <dimen name="activityDataReaderInputWidth">100dp</dimen>
-    <dimen name="activityDataReaderInputHeight">45dp</dimen>
-    <dimen name="activityDataReaderInputTextSize">24sp</dimen>
+    <dimen name="activityDataReaderInputMT">16dp</dimen>
+    <dimen name="activityDataReaderInputWidth">90dp</dimen>
+    <dimen name="activityDataReaderInputHeight">55dp</dimen>
     <dimen name="activityDataReaderInputPadding">32dp</dimen>
 
-    <dimen name="activityDataReaderButtonsFastingTextSize">24sp</dimen>
+    <dimen name="activityDataReaderButtonsFastingTextSize">16sp</dimen>
     <dimen name="activityDataReaderButtonsFastingPadding">32dp</dimen>
+
+
+    <!-- ACTIVITY DATA READER HOURLY ITEM -->
+    <dimen name="hourlyItemHeight">35dp</dimen>
+    <dimen name="hourlyItemWidth">70dp</dimen>
+    <dimen name="hourlyItemTextSize">16sp</dimen>
+
+    <!-- ACTIVITY DATA READER TAGS ITEM -->
+    <dimen name="tagsItemHeight">35dp</dimen>
+    <dimen name="tagsItemTextSize">16sp</dimen>
+
+    <!-- ACTIVITY DATA READER YES NO BUTTON -->
+    <dimen name="activityDataReaderBtnHeight">35dp</dimen>
+    <dimen name="activityDataReaderBtnWidth">65dp</dimen>
+
+
+
 </resources>

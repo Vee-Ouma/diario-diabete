@@ -1,9 +1,12 @@
 package it.chiarani.diario_diabete.views;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
@@ -13,9 +16,8 @@ import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
 import it.chiarani.diario_diabete.db.Injection;
+import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
-import it.chiarani.diario_diabete.fragments.BottomNavigationDrawerFragment;
-import it.chiarani.diario_diabete.models.User;
 import it.chiarani.diario_diabete.viewmodels.UserViewModel;
 import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
 
@@ -49,7 +51,11 @@ public class MainActivity extends BaseActivity {
         this.setSupportActionBar(binding.bottomAppBar);
         setBottomAppBarHamburgerListener();
 
-        UserEntity test = new UserEntity(null, "fabio", "chiarani", 11, 11, true, 11);
+        List<TagsEntity> itemsTags = new ArrayList<>();
+        itemsTags.add(new TagsEntity(1, "Pranzo", ""));
+        itemsTags.add(new TagsEntity(2, "Cena", ""));
+        itemsTags.add(new TagsEntity(3, "Cioccolata", ""));
+        UserEntity test = new UserEntity(null, "fabio", "chiarani", 11, 11, true, 11, itemsTags);
 
         mDisposable.add(mUserViewModel.insertUser(test)
                 .subscribeOn(Schedulers.io())
@@ -73,10 +79,17 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 // Open bottom sheet
-                BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
-                bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
+              /*  BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
+                bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");*/
+
+                next();
             }
         });
+    }
+
+    private void next() {
+        Intent intent = new Intent(this, DataReaderActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -2,6 +2,12 @@
     <string name="app_name">diario-diabete</string>
     <string name="LoginActivity_title">Diaro del Diabete</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activityDataReaderGlicemia">Glicemia (mg/dl)</string>
+    <string name="activityDataReaderGlicemiaInput">0</string>
+    <string name="activityDataReaderSliderNo">NO</string>
+    <string name="activityDataReaderSliderYes">SI</string>
+    <string name="activityDataReaderFasting">Digiuno</string>
+    <string name="activityDataReaderEatenBy">Mangiato da 2h</string>
+    <string name="actvityDataReaderTags">Tags</string>
+    <string name="activityDataReaderCreate">Crea</string>
 </resources>
