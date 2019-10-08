@@ -7,12 +7,15 @@ import it.chiarani.diario_diabete.adapters.TagsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityDataReaderBinding;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -63,5 +66,27 @@ public class DataReaderActivity extends BaseActivity {
 
         binding.activityDataReaderDatePicker.setText(currentDate);
         binding.activityDataReaderTimePicker.setText(currentTime);
+
+        binding.activityDataReaderDatePicker.setOnClickListener(v -> {
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR);
+            int mMonth = c.get(Calendar.MONTH);
+            int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            binding.activityDataReaderDatePicker.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+
+                        }
+                    }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+        });
     }
 }
