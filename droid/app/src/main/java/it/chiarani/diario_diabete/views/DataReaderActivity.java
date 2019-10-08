@@ -5,14 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.adapters.TagsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityDataReaderBinding;
-import it.chiarani.diario_diabete.adapters.HourlyItemsAdapter;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
-import it.chiarani.diario_diabete.models.HourlyList;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
 import java.util.List;
