@@ -18,10 +18,12 @@ import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
     private List<TagsEntity> mItems;
-    private ArrayList<Integer> mPositionToColor = new ArrayList<>();
+    private List<Integer> mPositionToColor = new ArrayList<>();
+    private final ListItemClickListener mOnClickListener;
 
-    public TagsAdapter(List<TagsEntity> hourlyList) {
-        this.mItems = hourlyList;
+    public TagsAdapter(List<TagsEntity> tagsList, ListItemClickListener mOnClickListener) {
+        this.mItems = tagsList;
+        this.mOnClickListener = mOnClickListener;
     }
 
     @NonNull
@@ -48,6 +50,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
+            mOnClickListener.onItemClick(getAdapterPosition());
+
             if(mPositionToColor.contains(getAdapterPosition())) {
                 int index = mPositionToColor.indexOf(getAdapterPosition());
                 mPositionToColor.remove(index);

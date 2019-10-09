@@ -125,7 +125,7 @@
             app:textOn="@string/activityDataReaderSliderYes" />
 
         <com.github.angads25.toggle.widget.LabeledSwitch
-            android:id="@+id/activityDataReaderSwitchFasting2"
+            android:id="@+id/activityDataReaderSwitchEatenBy"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/activityDataReaderSliderHeight"
             android:layout_marginStart="18dp"
