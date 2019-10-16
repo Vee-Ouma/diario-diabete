@@ -18,8 +18,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/readingItemImgGlucometer"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="fitStart"
@@ -83,7 +83,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/readingItemTxt2"
+            android:id="@+id/readingItemTxtDateTime"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
             android:layout_below="@id/readingItemImgGlucometer"

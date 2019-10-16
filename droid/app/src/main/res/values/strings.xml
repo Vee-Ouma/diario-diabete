@@ -10,4 +10,6 @@
     <string name="activityDataReaderEatenBy">Mangiato da 2h</string>
     <string name="actvityDataReaderTags">Tags</string>
     <string name="activityDataReaderCreate">Crea</string>
+    <string name="readings_adapter_eatenby2h">Mangiato da 2h</string>
+    <string name="readings_adapter_fasting">Digiuno</string>
 </resources>

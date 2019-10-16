@@ -1,11 +1,18 @@
 package it.chiarani.diario_diabete.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
@@ -21,8 +28,10 @@ import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
 import it.chiarani.diario_diabete.adapters.TagsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
 import it.chiarani.diario_diabete.db.Injection;
+import it.chiarani.diario_diabete.db.persistence.entities.DiabeteReadingEntity;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
+import it.chiarani.diario_diabete.fragments.BottomNavigationDrawerFragment;
 import it.chiarani.diario_diabete.viewmodels.UserViewModel;
 import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
 
@@ -56,6 +65,27 @@ public class MainActivity extends BaseActivity {
         this.setSupportActionBar(binding.bottomAppBar);
         setBottomAppBarHamburgerListener();
 
+
+
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6),
+                new DataPoint(5, 3),
+                new DataPoint(6, 0),
+                new DataPoint(7, 6)
+        });
+        graph.addSeries(series);
+        graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
+        graph.getGridLabelRenderer().setVerticalLabelsVisible(true);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#bab2ec"));
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#bab2ec"));
+
+
         mUserViewModel.getUser()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -71,7 +101,8 @@ public class MainActivity extends BaseActivity {
                     binding.rv.setLayoutManager(linearLayoutManagerTags);
                     userEntity.getReadings();
 
-                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null, getApplicationContext());
+                    Collections.reverse(userEntity.getReadings());
+                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null);
                 //    TagsAdapter adapterTags = new TagsAdapter(userEntity.getReadings().get(2).getTags(), null);
 
                     binding.rv.setAdapter(adapterTags);
@@ -100,6 +131,15 @@ public class MainActivity extends BaseActivity {
 
 
 
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next();
+            }
+
+
+
+        });
       /*  mDisposable.add(mUserViewModel.insertUser(test)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -109,7 +149,6 @@ public class MainActivity extends BaseActivity {
                 }, throwable -> {
                    int x = 1;
                 }));*/
-
 
     }
 
@@ -124,10 +163,10 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 // Open bottom sheet
-              /*  BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
-                bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");*/
+                BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
+                bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
 
-                next();
+
             }
         });
     }
@@ -147,6 +186,33 @@ public class MainActivity extends BaseActivity {
         mDisposable.clear();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mUserViewModel.getUser()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( userEntity -> {
+                    // done
+                    int x = 1;
+
+                    LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(this);
+                    linearLayoutManagerTags.setOrientation(RecyclerView.VERTICAL);
+
+
+
+                    binding.rv.setLayoutManager(linearLayoutManagerTags);
+                    userEntity.getReadings();
+                    Collections.reverse(userEntity.getReadings());
+                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null);
+                    //    TagsAdapter adapterTags = new TagsAdapter(userEntity.getReadings().get(2).getTags(), null);
+
+                    binding.rv.setAdapter(adapterTags);
+                }, throwable -> {
+
+                });
+    }
 }
 
 

@@ -33,9 +33,6 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         return new TagsAdapter.ViewHolder(view);
     }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txt;
         RelativeLayout rl;
@@ -49,6 +46,10 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
+            if(mOnClickListener == null) {
+                return;
+            }
+
             mOnClickListener.onItemClick(getAdapterPosition());
 
             if(mPositionToColor.contains(getAdapterPosition())) {

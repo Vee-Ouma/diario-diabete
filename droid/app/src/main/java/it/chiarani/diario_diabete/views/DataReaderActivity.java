@@ -243,6 +243,7 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe( () -> {
                                         // done
+
                                         onBackPressed();
                                     }, throwable -> {
                                         // Log.e(TAG, "Unable to update username", throwable);
