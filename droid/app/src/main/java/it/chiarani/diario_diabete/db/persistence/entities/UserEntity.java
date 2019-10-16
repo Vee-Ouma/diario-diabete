@@ -20,7 +20,8 @@ public class UserEntity implements User {
     private int age;
     private List<TagsEntity> availableTags;
 
-    public UserEntity(List<DiabeteReadingEntity> readings, String name, String surname, int height, int weight, boolean sex, int age, List<TagsEntity> availableTags) {
+    public UserEntity(int id, List<DiabeteReadingEntity> readings, String name, String surname, int height, int weight, boolean sex, int age, List<TagsEntity> availableTags) {
+        this.id = id;
         this.readings = readings;
         this.name = name;
         this.surname = surname;

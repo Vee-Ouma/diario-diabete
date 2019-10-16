@@ -7,7 +7,6 @@ import it.chiarani.diario_diabete.models.Tags;
 @Entity(tableName = "tagsEntity")
 public class TagsEntity implements Tags {
 
-    @PrimaryKey(autoGenerate = true)
     private int id;
     private String value;
     private String colorHEX;

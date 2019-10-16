@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,7 +67,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         holder.txt.setText(mItems.get(position).getValue());
 
         if(mPositionToColor.contains(position)) {
-            holder.rl.setBackgroundResource(R.drawable.background_azure_button);
+            holder.rl.setBackgroundResource(R.drawable.background_azure_rectangle_button);
             holder.txt.setTextColor(holder.itemView.getResources().getColor(R.color.colorWhite));
         }
         else {

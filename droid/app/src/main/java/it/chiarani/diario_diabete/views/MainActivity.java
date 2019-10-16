@@ -10,10 +10,15 @@ import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
+import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
+import it.chiarani.diario_diabete.adapters.TagsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
 import it.chiarani.diario_diabete.db.Injection;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
@@ -51,21 +56,61 @@ public class MainActivity extends BaseActivity {
         this.setSupportActionBar(binding.bottomAppBar);
         setBottomAppBarHamburgerListener();
 
-        List<TagsEntity> itemsTags = new ArrayList<>();
-        itemsTags.add(new TagsEntity(1, "Pranzo", ""));
-        itemsTags.add(new TagsEntity(2, "Cena", ""));
-        itemsTags.add(new TagsEntity(3, "Cioccolata", ""));
-        UserEntity test = new UserEntity(null, "fabio", "chiarani", 11, 11, true, 11, itemsTags);
+        mUserViewModel.getUser()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( userEntity -> {
+                    // done
+                    int x = 1;
 
-        mDisposable.add(mUserViewModel.insertUser(test)
+                    LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(this);
+                    linearLayoutManagerTags.setOrientation(RecyclerView.VERTICAL);
+
+
+
+                    binding.rv.setLayoutManager(linearLayoutManagerTags);
+                    userEntity.getReadings();
+
+                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null, getApplicationContext());
+                //    TagsAdapter adapterTags = new TagsAdapter(userEntity.getReadings().get(2).getTags(), null);
+
+                    binding.rv.setAdapter(adapterTags);
+                }, throwable -> {
+                    List<TagsEntity> itemsTags = new ArrayList<>();
+                    itemsTags.add(new TagsEntity(1, "Mattina", ""));
+                    itemsTags.add(new TagsEntity(2, "Prima del pasto", ""));
+                    itemsTags.add(new TagsEntity(3, "Dopo il pasto", ""));
+                    itemsTags.add(new TagsEntity(4, "Sera", ""));
+                    itemsTags.add(new TagsEntity(5, "Camminare", ""));
+                    itemsTags.add(new TagsEntity(6, "Sport", ""));
+                    itemsTags.add(new TagsEntity(7, "Pranzo", ""));
+                    itemsTags.add(new TagsEntity(8, "Cena", ""));
+                    itemsTags.add(new TagsEntity(9, "Spuntino", ""));
+                    itemsTags.add(new TagsEntity(10, "Merenda", ""));
+                    UserEntity test = new UserEntity(1, null, "fabio", "chiarani", 11, 11, true, 11, itemsTags);
+
+                    mUserViewModel.insertUser(test)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe( () -> {
+                                // done
+                                int x = 2;
+                            });
+                });
+
+
+
+      /*  mDisposable.add(mUserViewModel.insertUser(test)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe( () -> {
                     // done
                     int x = 2;
                 }, throwable -> {
-                   // Log.e(TAG, "Unable to update username", throwable);
-                }));
+                   int x = 1;
+                }));*/
+
+
     }
 
     @Override
@@ -88,6 +133,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void next() {
+
+
         Intent intent = new Intent(this, DataReaderActivity.class);
         startActivity(intent);
     }

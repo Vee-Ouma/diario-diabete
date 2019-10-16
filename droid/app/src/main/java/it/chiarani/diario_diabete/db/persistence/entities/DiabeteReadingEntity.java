@@ -16,9 +16,10 @@ public class DiabeteReadingEntity implements DiabeteReading {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private long timestamp;
-    private long readingDate;
-    private long readingHour;
+    private String readingDate;
+    private String readingHour;
     private boolean isFasting;
+    private boolean isEaten2h;
     private float value;
     private String notes;
     private List<TagsEntity> tags;
@@ -31,12 +32,13 @@ public class DiabeteReadingEntity implements DiabeteReading {
 
     }
 
-    public DiabeteReadingEntity(int id, long timestamp, long readingDate, long readingHour, boolean isFasting, float value, String notes, List<TagsEntity> tags) {
+    public DiabeteReadingEntity(int id, long timestamp, String readingDate, String readingHour, boolean isFasting, boolean isEaten2h, float value, String notes, List<TagsEntity> tags) {
         this.id = id;
         this.timestamp = timestamp;
         this.readingDate = readingDate;
         this.readingHour = readingHour;
         this.isFasting = isFasting;
+        this.isEaten2h = isEaten2h;
         this.value = value;
         this.notes = notes;
         this.tags = tags;
@@ -51,12 +53,12 @@ public class DiabeteReadingEntity implements DiabeteReading {
     }
 
     @Override
-    public long getReadingHour() {
+    public String getReadingHour() {
         return readingHour;
     }
 
     @Override
-    public void setReadingHour(long readingHour) {
+    public void setReadingHour(String readingHour) {
         this.readingHour = readingHour;
     }
 
@@ -82,12 +84,12 @@ public class DiabeteReadingEntity implements DiabeteReading {
     }
 
     @Override
-    public long getReadingDate() {
+    public String getReadingDate() {
         return readingDate;
     }
 
     @Override
-    public void setReadingDate(long readingDate) {
+    public void setReadingDate(String readingDate) {
         this.readingDate = readingDate;
     }
 
@@ -119,5 +121,15 @@ public class DiabeteReadingEntity implements DiabeteReading {
     @Override
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public boolean isEaten2h() {
+        return isEaten2h;
+    }
+
+    @Override
+    public void setEaten2h(boolean eaten2h) {
+        isEaten2h = eaten2h;
     }
 }

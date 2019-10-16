@@ -4,6 +4,7 @@ package it.chiarani.diario_diabete.viewmodels;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Single;
 import it.chiarani.diario_diabete.db.UserDataSource;
 import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
 
@@ -17,7 +18,7 @@ public class UserViewModel extends ViewModel {
         mUserDataSource = userDataSource;
     }
 
-    public Flowable<UserEntity> getUser() {
+    public Single<UserEntity> getUser() {
         return mUserDataSource.getUser();
     }
 

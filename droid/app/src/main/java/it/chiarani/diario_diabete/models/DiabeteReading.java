@@ -34,25 +34,25 @@ public interface DiabeteReading {
      * Return the time when the user read the value
      * @return the time when the user read the value
      */
-    long getReadingDate();
+    String getReadingDate();
 
     /**
      * Set the time on when the user read the value
      * @param readingDate the time on when the user read the value
      */
-    void setReadingDate(long readingDate);
+    void setReadingDate(String readingDate);
 
     /**
      * Return the timestamp of when the reading is created
      * @return the timestamp of when the reading is created
      */
-    long getReadingHour();
+    String getReadingHour();
 
     /**
      * Set the timestamp of when the reading is created
      * @param timestamp the timestamp of when the reading is created
      */
-    void setReadingHour(long timestamp);
+    void setReadingHour(String timestamp);
 
     /**
      * Return true if during the reading value the user is fasting. False otherwise.
@@ -92,4 +92,8 @@ public interface DiabeteReading {
     public List<TagsEntity> getTags();
 
     public void setTags(List<TagsEntity> tags);
+
+    public boolean isEaten2h();
+
+    public void setEaten2h(boolean eaten2h);
 }

@@ -2,6 +2,7 @@ package it.chiarani.diario_diabete.db.persistence;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Single;
 import it.chiarani.diario_diabete.db.UserDataSource;
 import it.chiarani.diario_diabete.db.persistence.DAO.UserDao;
 import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
@@ -18,7 +19,7 @@ public class LocalUserDataSource implements UserDataSource {
     }
 
     @Override
-    public Flowable<UserEntity> getUser() {
+    public Single<UserEntity> getUser() {
         return mUserDao.getUser();
     }
 
