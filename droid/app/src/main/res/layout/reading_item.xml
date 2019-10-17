@@ -8,8 +8,6 @@
         android:id="@+id/readingItemRl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/background_reading_item_white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,46 +18,33 @@
             android:id="@+id/readingItemImgGlucometer"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginBottom="8dp"
             android:adjustViewBounds="true"
+            android:background="@drawable/background_azure_button"
             android:cropToPadding="true"
+            android:padding="8dp"
             android:scaleType="fitStart"
-
-            android:src="@drawable/ic_glucometer"
+            android:src="@drawable/ic_glucometer_white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.014"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/readingItemImgGlucometer2"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:adjustViewBounds="true"
-
-            android:cropToPadding="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/ic_eye"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rvTest"
-            app:layout_constraintTop_toBottomOf="@+id/readingItemTxt2" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/readingItemTxt"
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/readingItemImgGlucometer"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:elevation="1dp"
-            android:fontFamily="@font/product_sans_regular"
+            android:fontFamily="@font/product_sans_bold"
             android:text="100,00"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.206"
+            app:layout_constraintHorizontal_bias="0.161"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
@@ -68,17 +53,16 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/readingItemDescr"
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/readingItemImgGlucometer"
             android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
             android:elevation="1dp"
             android:fontFamily="@font/product_sans_regular"
             android:text="Digiuno"
-            android:textColor="@color/colorLightGray"
-            android:textSize="18sp"
+            android:textColor="#727272"
+            android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintStart_toEndOf="@+id/readingItemTxt"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
@@ -92,41 +76,50 @@
             android:elevation="1dp"
             android:fontFamily="@font/product_sans_bold"
             android:gravity="center"
-            android:text="17:30\n31/12/96"
-            android:textColor="@color/colorBlack"
-            android:textSize="10sp"
+            android:text="17:3031/12/96"
+            android:textColor="#727272"
+            android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="315dp" />
+            app:layout_constraintGuide_begin="277dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="28dp" />
+            app:layout_constraintGuide_begin="45dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTest"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/readingItemImgGlucometer"
-            app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/readingItemDescr"
+            app:layout_constraintTop_toBottomOf="@+id/readingItemTxt" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="52dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

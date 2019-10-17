@@ -63,19 +63,14 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ReadingsAdapter.ViewHolder holder, int position) {
         holder.txtValue.setText(String.format("%s", mItems.get(position).getValue()));
 
-        TextDrawable drawable;
+    //    TextDrawable drawable;
         if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {
-            drawable = TextDrawable.builder()
-                    .buildRound("PRE", Color.rgb(248, 206, 94));
+           holder.imgTextDraw.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
         }
         else if (mItems.get(position).getValue() >= 125) {
-            drawable = TextDrawable.builder()
-                    .buildRound("DIA", Color.rgb(207, 92, 78));
+            holder.imgTextDraw.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
         }
-        else {
-            drawable = TextDrawable.builder()
-                    .buildRound("OK", Color.rgb(72, 157, 99));
-        }
+
 
         if(!mItems.get(position).isEaten2h()) {
             holder.txtDescription.setText(mContext.getString(R.string.readings_adapter_eatenby2h));
@@ -84,14 +79,14 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
             holder.txtDescription.setText(mContext.getString(R.string.readings_adapter_fasting));
         }
 
-        holder.txtDateTime.setText(String.format("%s\n%s", mItems.get(position).getReadingHour(), mItems.get(position).getReadingDate()));
+        holder.txtDateTime.setText(String.format("%s %s", mItems.get(position).getReadingHour(), mItems.get(position).getReadingDate()));
 
 
-        holder.imgTextDraw.setImageDrawable(drawable);
+      //  holder.imgTextDraw.setImageDrawable(drawable);
 
         LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(mContext);
         linearLayoutManagerTags.setOrientation(RecyclerView.HORIZONTAL);
-
+        linearLayoutManagerTags.setReverseLayout(true);
 
         TagsAdapter adapterTags = new TagsAdapter(mItems.get(position).getTags(), null);
 
