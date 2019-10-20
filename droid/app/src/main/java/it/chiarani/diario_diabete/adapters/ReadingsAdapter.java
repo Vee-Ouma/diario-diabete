@@ -43,11 +43,11 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
         ImageView imgTextDraw;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtValue = itemView.findViewById(R.id.readingItemTxt);
-            rvTags = itemView.findViewById(R.id.rvTest);
-            imgTextDraw = itemView.findViewById(R.id.readingItemImgGlucometer);
+            txtValue = itemView.findViewById(R.id.readingItemReadingValue);
+          //  rvTags = itemView.findViewById(R.id.rvTest);
+          //  imgTextDraw = itemView.findViewById(R.id.readingItemImgGlucometer);
             txtDescription = itemView.findViewById(R.id.readingItemDescr);
-            txtDateTime = itemView.findViewById(R.id.readingItemTxtDateTime);
+            txtDateTime = itemView.findViewById(R.id.readingItemDate);
             itemView.setOnClickListener(this);
         }
 
@@ -62,22 +62,21 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ReadingsAdapter.ViewHolder holder, int position) {
         holder.txtValue.setText(String.format("%s", mItems.get(position).getValue()));
+        holder.txtDateTime.setText(String.format("%s", mItems.get(position).getReadingDate().substring(0,5)));
+        holder.txtDescription.setText("N");
 
-    //    TextDrawable drawable;
         if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {
-           holder.imgTextDraw.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+           holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+           holder.txtDescription.setText("P");
+
         }
         else if (mItems.get(position).getValue() >= 125) {
-            holder.imgTextDraw.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+            holder.txtDescription.setText("D");
         }
 
 
-        if(!mItems.get(position).isEaten2h()) {
-            holder.txtDescription.setText(mContext.getString(R.string.readings_adapter_eatenby2h));
-        }
-        else {
-            holder.txtDescription.setText(mContext.getString(R.string.readings_adapter_fasting));
-        }
+/*
 
         holder.txtDateTime.setText(String.format("%s %s", mItems.get(position).getReadingHour(), mItems.get(position).getReadingDate()));
 
@@ -91,7 +90,8 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
         TagsAdapter adapterTags = new TagsAdapter(mItems.get(position).getTags(), null);
 
         holder.rvTags.setAdapter(adapterTags);
-        holder.rvTags.setLayoutManager(linearLayoutManagerTags);
+        holder.rvTags.setLayoutManager(linearLayoutManagerTags);*/
+
     }
 
 

@@ -5,121 +5,195 @@
     <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginRight="6dp"
         android:id="@+id/readingItemRl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/background_reading_item_white"
+        android:background="@drawable/background_azure_button"
         app:layout_constraintEnd_toEndOf="parent"
+        android:paddingEnd="7dp"
+        android:paddingStart="7dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/readingItemImgGlucometer"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="8dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/background_azure_button"
-            android:cropToPadding="true"
-            android:padding="8dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/ic_glucometer_white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/readingItemTxt"
-            android:layout_width="80dp"
+            android:id="@+id/readingItemDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/readingItemImgGlucometer"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/background_azure_black_button"
             android:elevation="1dp"
-            android:fontFamily="@font/product_sans_bold"
-            android:text="100,00"
-            android:textColor="@color/colorBlack"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.161"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="01/02"
+            android:textColor="@color/colorWhite"
+            android:layout_marginRight="3dp"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/readingItemDescr"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintVertical_chainStyle="spread_inside" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/readingItemDescr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/readingItemImgGlucometer"
-            android:layout_centerVertical="true"
-            android:elevation="1dp"
-            android:fontFamily="@font/product_sans_regular"
-            android:text="Digiuno"
-            android:textColor="#727272"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/readingItemTxtDateTime"
-            android:layout_width="wrap_content"
-            android:layout_height="26dp"
-            android:layout_below="@id/readingItemImgGlucometer"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/background_green_button"
             android:elevation="1dp"
-            android:fontFamily="@font/product_sans_bold"
-            android:gravity="center"
-            android:text="17:3031/12/96"
-            android:textColor="#727272"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="n"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/readingItemDate"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="277dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="45dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/readingItemImgGlucometer"
+            android:layout_width="40dp"
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTest"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            android:layout_height="40dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background_azure_button"
+            android:cropToPadding="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_blood"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/readingItemDescr"
-            app:layout_constraintTop_toBottomOf="@+id/readingItemTxt" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/readingItemDescr"/>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingItemReadingValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="52dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:elevation="1dp"
+            android:text="100,00"
+            app:fontFamily="@font/product_sans_bold"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/readingItemImgGlucometer" />
+
+        <!--  <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/readingItemImgGlucometer"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginBottom="8dp"
+              android:adjustViewBounds="true"
+              android:background="@drawable/background_azure_button"
+              android:cropToPadding="true"
+              android:padding="8dp"
+              android:scaleType="fitStart"
+              android:src="@drawable/ic_glucometer_white"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="0.0" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/readingItemTxt"
+              android:layout_width="80dp"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/readingItemImgGlucometer"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:elevation="1dp"
+              android:fontFamily="@font/product_sans_bold"
+              android:text="100,00"
+              android:textColor="@color/colorBlack"
+              android:textSize="22sp"
+              app:layout_constraintBottom_toTopOf="@+id/guideline3"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.161"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="0.0"
+              app:layout_constraintVertical_chainStyle="spread_inside" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/readingItemDescr"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/readingItemImgGlucometer"
+              android:layout_centerVertical="true"
+              android:elevation="1dp"
+              android:fontFamily="@font/product_sans_regular"
+              android:text="Digiuno"
+              android:textColor="#727272"
+              android:textSize="13sp"
+              app:layout_constraintBottom_toTopOf="@+id/guideline3"
+              app:layout_constraintStart_toStartOf="@+id/guideline4"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="1.0" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/readingItemTxtDateTime"
+              android:layout_width="wrap_content"
+              android:layout_height="26dp"
+              android:layout_below="@id/readingItemImgGlucometer"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:elevation="1dp"
+              android:fontFamily="@font/product_sans_bold"
+              android:gravity="center"
+              android:text="17:3031/12/96"
+              android:textColor="#727272"
+              android:textSize="13sp"
+              app:layout_constraintBottom_toTopOf="@+id/guideline3"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="1.0"
+              app:layout_constraintStart_toStartOf="@+id/guideline2"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="0.0" />
+
+          <androidx.constraintlayout.widget.Guideline
+              android:id="@+id/guideline2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              app:layout_constraintGuide_begin="277dp" />
+
+          <androidx.constraintlayout.widget.Guideline
+              android:id="@+id/guideline3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              app:layout_constraintGuide_begin="45dp" />
+
+          <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/rvTest"
+              android:layout_width="250dp"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="8dp"
+              android:layout_marginTop="8dp"
+              android:orientation="horizontal"
+              android:scrollbars="none"
+              app:layout_constraintBottom_toTopOf="@+id/guideline3"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="1.0"
+              app:layout_constraintStart_toEndOf="@+id/readingItemDescr"
+              app:layout_constraintTop_toBottomOf="@+id/readingItemTxt" />
+
+          <androidx.constraintlayout.widget.Guideline
+              android:id="@+id/guideline4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              app:layout_constraintGuide_begin="52dp" /> -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

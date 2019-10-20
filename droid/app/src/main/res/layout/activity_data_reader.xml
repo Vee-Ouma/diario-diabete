@@ -192,6 +192,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activityDataReaderMT"
             android:orientation="horizontal"
+
+            android:layout_marginLeft="16dp"
             android:scrollbars="none"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintLeft_toLeftOf="parent"

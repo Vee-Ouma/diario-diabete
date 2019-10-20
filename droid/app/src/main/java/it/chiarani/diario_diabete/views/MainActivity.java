@@ -8,11 +8,14 @@ import android.view.View;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
@@ -67,24 +70,6 @@ public class MainActivity extends BaseActivity {
 
 
 
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6),
-                new DataPoint(5, 3),
-                new DataPoint(6, 0),
-                new DataPoint(7, 6)
-        });
-        graph.addSeries(series);
-        graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
-        graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
-        graph.getGridLabelRenderer().setVerticalLabelsVisible(true);
-        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#bab2ec"));
-        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#bab2ec"));
-
 
         mUserViewModel.getUser()
                 .subscribeOn(Schedulers.io())
@@ -93,10 +78,35 @@ public class MainActivity extends BaseActivity {
                     // done
                     int x = 1;
 
+                    GraphView graph = (GraphView) findViewById(R.id.graph);
+
+                    DataPoint[] dataPoints = new DataPoint[userEntity.getReadings().size()]; // declare an array of DataPoint objects with the same size as your list
+                    for (int i = 0; i < userEntity.getReadings().size(); i++) {
+                        Calendar calendar = Calendar.getInstance();
+                        String giorno = userEntity.getReadings().get(i).getReadingDate().split("/")[0];
+                        String mese = userEntity.getReadings().get(i).getReadingDate().split("/")[1];
+                        String ora = userEntity.getReadings().get(i).getReadingHour().split(":")[0];
+                        String min = userEntity.getReadings().get(i).getReadingHour().split(":")[1];
+                        calendar.set(2019,Integer.parseInt(mese), Integer.parseInt(giorno), Integer.parseInt(ora), Integer.parseInt(min));
+                        Date d1 = calendar.getTime();
+                        // add new DataPoint object to the array for each of your list entries
+                        dataPoints[i] = new DataPoint(d1, userEntity.getReadings().get(i).getValue());
+                    }
+                    LineGraphSeries<DataPoint> base = new LineGraphSeries<DataPoint>(dataPoints);
+
+                    graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
+                    graph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
+                    graph.getGridLabelRenderer().setVerticalLabelsVisible(true);
+                    graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#bab2ec"));
+                    graph.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#bab2ec"));
+
+                    graph.addSeries(base);
+
+                    // set date label formatter
+                    graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
+
                     LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(this);
-                    linearLayoutManagerTags.setOrientation(RecyclerView.VERTICAL);
-
-
+                    linearLayoutManagerTags.setOrientation(RecyclerView.HORIZONTAL);
 
                     binding.rv.setLayoutManager(linearLayoutManagerTags);
                     userEntity.getReadings();
@@ -105,7 +115,22 @@ public class MainActivity extends BaseActivity {
                     ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null);
                 //    TagsAdapter adapterTags = new TagsAdapter(userEntity.getReadings().get(2).getTags(), null);
 
+
+                  // graph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
+
+// set manual x bounds to have nice steps
+                   // graph.getViewport().setMaxX(userEntity.getReadings().get(0).getTimestamp());
+                   // graph.getViewport().setMinX(userEntity.getReadings().get(userEntity.getReadings().size()-1).getTimestamp());
+                   // graph.getViewport().setXAxisBoundsManual(true);
+
+// as we use dates as labels, the human rounding to nice readable numbers
+// is not necessary
+                    //graph.getGridLabelRenderer().setHumanRounding(false);
+
+
                     binding.rv.setAdapter(adapterTags);
+
+
                 }, throwable -> {
                     List<TagsEntity> itemsTags = new ArrayList<>();
                     itemsTags.add(new TagsEntity(1, "Mattina", ""));
@@ -198,8 +223,7 @@ public class MainActivity extends BaseActivity {
                     int x = 1;
 
                     LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(this);
-                    linearLayoutManagerTags.setOrientation(RecyclerView.VERTICAL);
-
+                    linearLayoutManagerTags.setOrientation(RecyclerView.HORIZONTAL);
 
 
                     binding.rv.setLayoutManager(linearLayoutManagerTags);
