@@ -48,6 +48,10 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
 
         @Override
         public void onClick(View v) {
+            if(mOnClickListener == null) {
+                return;
+            }
+
             mOnClickListener.onItemClick(getAdapterPosition());
         }
     }

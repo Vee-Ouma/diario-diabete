@@ -76,11 +76,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         binding.fab.setOnClickListener(view -> launchActivity(DataReaderActivity.class) );
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bottom_menu, menu);
-        return true;
-    }
 
     private void setBottomAppBarHamburgerListener() {
         binding.bottomAppBar.setNavigationOnClickListener(view -> {
