@@ -125,10 +125,6 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                             mItemTags.add(new TagsEntity(3, "Cioccolata", ""));
                         }
 
-                        /*
-                        LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(this);
-                        linearLayoutManagerTags.setOrientation(LinearLayoutManager.HORIZONTAL);*/
-
                         GridLayoutManager gridLayout = new GridLayoutManager(this, 4);
 
                         binding.activityDataReaderRVTags.setLayoutManager(gridLayout);

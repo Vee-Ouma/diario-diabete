@@ -94,7 +94,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="20dp"
                     android:elevation="1dp"
                     android:text="vedi tutte >"
                     android:textColor="@color/colorLightGray"

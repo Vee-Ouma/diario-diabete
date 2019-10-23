@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -27,6 +28,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
+import it.chiarani.diario_diabete.adapters.ListItemClickListener;
+import it.chiarani.diario_diabete.adapters.ReadingItemClickListener;
 import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
 import it.chiarani.diario_diabete.adapters.TagsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
@@ -35,15 +38,17 @@ import it.chiarani.diario_diabete.db.persistence.entities.DiabeteReadingEntity;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
 import it.chiarani.diario_diabete.fragments.BottomNavigationDrawerFragment;
+import it.chiarani.diario_diabete.fragments.ReadingDetailFragment;
 import it.chiarani.diario_diabete.viewmodels.UserViewModel;
 import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ReadingItemClickListener {
 
     private ActivityMainBinding binding;
     private ViewModelFactory mViewModelFactory;
     private UserViewModel mUserViewModel;
     private final CompositeDisposable mDisposable = new CompositeDisposable();
+    private UserEntity cachedUser;
 
     @Override
     protected int getLayoutID() {
@@ -77,6 +82,8 @@ public class MainActivity extends BaseActivity {
                 .subscribe( userEntity -> {
                     // done
                     int x = 1;
+
+                    cachedUser = userEntity;
 
                     GraphView graph = (GraphView) findViewById(R.id.graph);
 
@@ -112,7 +119,7 @@ public class MainActivity extends BaseActivity {
                     userEntity.getReadings();
 
                     Collections.reverse(userEntity.getReadings());
-                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null);
+                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), this::onItemClick);
                 //    TagsAdapter adapterTags = new TagsAdapter(userEntity.getReadings().get(2).getTags(), null);
 
 
@@ -187,11 +194,8 @@ public class MainActivity extends BaseActivity {
         binding.bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Open bottom sheet
                 BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
                 bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
-
-
             }
         });
     }
@@ -229,13 +233,32 @@ public class MainActivity extends BaseActivity {
                     binding.rv.setLayoutManager(linearLayoutManagerTags);
                     userEntity.getReadings();
                     Collections.reverse(userEntity.getReadings());
-                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), null);
+                    ReadingsAdapter adapterTags = new ReadingsAdapter(userEntity.getReadings(), this::onItemClick);
                     //    TagsAdapter adapterTags = new TagsAdapter(userEntity.getReadings().get(2).getTags(), null);
 
                     binding.rv.setAdapter(adapterTags);
                 }, throwable -> {
 
                 });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+        mUserViewModel.getUser()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( userEntity -> {
+                    // done
+                    Collections.reverse(userEntity.getReadings());
+                    ReadingDetailFragment fragment = new ReadingDetailFragment(userEntity.getReadings().get(position));
+                    fragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog1");
+
+                }, throwable -> {
+
+                });
+
+
     }
 }
 

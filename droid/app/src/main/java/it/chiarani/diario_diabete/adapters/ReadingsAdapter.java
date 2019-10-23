@@ -13,18 +13,20 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.db.persistence.entities.DiabeteReadingEntity;
+import it.chiarani.diario_diabete.fragments.ReadingDetailFragment;
 
 public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHolder> {
 
     private List<DiabeteReadingEntity> mItems;
-    private final ListItemClickListener mOnClickListener;
+    private final ReadingItemClickListener mOnClickListener;
     private Context mContext;
 
-    public ReadingsAdapter(List<DiabeteReadingEntity> tagsList, ListItemClickListener mOnClickListener) {
+    public ReadingsAdapter(List<DiabeteReadingEntity> tagsList, ReadingItemClickListener mOnClickListener) {
         this.mItems = tagsList;
         this.mOnClickListener = mOnClickListener;
     }
@@ -54,7 +56,7 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-
+            mOnClickListener.onItemClick(getAdapterPosition());
         }
     }
 
