@@ -1,6 +1,8 @@
 package it.chiarani.diario_diabete.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -53,6 +56,11 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
         binding.fragmentReadingDetailTime.setText(String.format("%s", mReading.getReadingDate()));
         binding.fragmentReadingDetailDescription.setText("Nella norma");
 
+        binding.fragmentReadingDetailFasting.setText("Digiuno");
+        if(mReading.isEaten2h()) {
+            binding.fragmentReadingDetailFasting.setText("Mangiato da 2h");
+        }
+
         if(mReading.getValue() > 100 && mReading.getValue() < 125) {
             binding.fragmentReadingDetailDescription.setText("Pre-Diabete");
 
@@ -70,6 +78,20 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
         binding.fragmentReadingDetailRvTags.setAdapter(adapterTags);
 
 
+        binding.fragmentReadingDetailBtnDelete.setOnClickListener(v-> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Eliminare la lettura?");
+            // Add the buttons
+            builder.setPositiveButton("Si", (dialog, id) -> {
+                // User clicked OK button
+            });
+            builder.setNegativeButton("No", (dialog, id) -> {
+                // User cancelled the dialog
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
 
         return  view;
     }

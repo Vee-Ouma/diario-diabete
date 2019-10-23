@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/readingDetailItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_azure_button"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingDetailItemHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/background_azure_black_button"
+            android:elevation="1dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="01/02"
+            android:textColor="@color/appColorWhite"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingDetailItemTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/background_azure_black_button"
+            android:elevation="1dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="01/02"
+            android:textColor="@color/appColorWhite"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/readingDetailItemHour"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingDetailItemDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/background_green_button"
+            android:elevation="1dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="Nella Norma"
+            android:textColor="@color/appColorWhite"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingDetailItemFasting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/background_green_button"
+            android:elevation="1dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="Digiuno"
+            android:textColor="@color/appColorWhite"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/readingDetailItemDescription"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/readingItemImgGlucometer"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background_azure_button"
+            android:cropToPadding="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_blood"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/readingDetailItemHour" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingDetailItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:elevation="1dp"
+            android:text="100,00"
+            android:textColor="#1B3667"
+            android:textSize="18sp"
+            app:fontFamily="@font/product_sans_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/readingItemImgGlucometer"
+            app:layout_constraintTop_toBottomOf="@+id/readingDetailItemTime" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

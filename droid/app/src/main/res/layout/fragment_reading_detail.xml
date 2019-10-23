@@ -16,6 +16,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="32dp"
             android:src="@drawable/ic_delete"
+            android:id="@+id/fragmentReadingDetailBtnDelete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.958"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/activityDataReaderTimeButtonsHeight"
             android:layout_marginTop="26dp"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/appColorWhite"
             android:drawableStart="@drawable/ic_calendar"
             android:drawablePadding="@dimen/main16"
             android:fontFamily="@font/product_sans_regular"
@@ -44,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/activityDataReaderTimeButtonsHeight"
             android:layout_marginTop="26dp"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/appColorWhite"
             android:drawableStart="@drawable/ic_clock"
             android:drawablePadding="@dimen/main16"
             android:fontFamily="@font/product_sans_regular"
@@ -57,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/activityDataReaderTitleReading"
+            android:id="@+id/fragmentReadingDetailTxtDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -69,10 +70,10 @@
             app:layout_constraintHorizontal_bias="0.346"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityDataReaderTitleReading2" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailTxtGlicemia" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/activityDataReaderTitleReading5"
+            android:id="@+id/fragmentReadingDetailTxtReading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -84,10 +85,10 @@
             app:layout_constraintHorizontal_bias="0.388"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityDataReaderTitleReading" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailTxtDescription" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/activityDataReaderTitleReading7"
+            android:id="@+id/fragmentReadingDetailTxtTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -99,7 +100,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityDataReaderTitleReading5" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailTxtReading" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragmentReadingDetailRvTags"
@@ -115,13 +116,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityDataReaderTitleReading7"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailTxtTags"
             app:layout_constraintVertical_bias="0.0">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/activityDataReaderTitleReading2"
+            android:id="@+id/fragmentReadingDetailTxtGlicemia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -165,7 +166,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailValue" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailTxtGlicemia" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fragmentReadingDetailFasting"
@@ -181,7 +182,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/fragmentReadingDetailTxtDescription" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"

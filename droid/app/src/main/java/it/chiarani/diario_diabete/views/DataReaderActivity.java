@@ -1,9 +1,23 @@
 package it.chiarani.diario_diabete.views;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -18,32 +32,11 @@ import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
 import it.chiarani.diario_diabete.viewmodels.UserViewModel;
 import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.DatePicker;
-import android.widget.GridLayout;
-import android.widget.TimePicker;
-
-import com.github.angads25.toggle.interfaces.OnToggledListener;
-import com.github.angads25.toggle.model.ToggleableView;
-
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 public class DataReaderActivity extends BaseActivity implements ListItemClickListener {
 
     private ActivityDataReaderBinding binding;
     private List<TagsEntity> mSelectedTags = new ArrayList<>();
     private List<TagsEntity> mItemTags = new ArrayList<>();
-    private ViewModelFactory mViewModelFactory;
     private UserViewModel mUserViewModel;
     private final CompositeDisposable mDisposable = new CompositeDisposable();
     private boolean blockObserver = true;
@@ -61,7 +54,7 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
 
     @Override
     protected void setViewModel() {
-        mViewModelFactory = Injection.provideViewModelFactory(this);
+        ViewModelFactory mViewModelFactory = Injection.provideViewModelFactory(this);
         mUserViewModel = ViewModelProviders.of(this, mViewModelFactory).get(UserViewModel.class);
     }
 
@@ -119,10 +112,6 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                     if(userEntity != null) {
                         if(userEntity.getAvailableTags() != null) {
                             mItemTags.addAll(userEntity.getAvailableTags());
-                        } else {
-                            mItemTags.add(new TagsEntity(1, "Pranzo", ""));
-                            mItemTags.add(new TagsEntity(2, "Cena", ""));
-                            mItemTags.add(new TagsEntity(3, "Cioccolata", ""));
                         }
 
                         GridLayoutManager gridLayout = new GridLayoutManager(this, 4);
@@ -134,7 +123,7 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                         binding.activityDataReaderRVTags.setAdapter(adapterTags);
                     }
                 },throwable -> {
-                    // error
+                    Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
                 }));
     }
 
@@ -188,17 +177,22 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
         binding.activityDataReaderSwitchEatenBy.setOnToggledListener((toggleableView, isOn) -> {
             if(isOn) {
                 binding.activityDataReaderSwitchFasting.setOn(false);
-                mDiabeteReadingEntity.setFasting(true);
+                mDiabeteReadingEntity.setEaten2h(true);
+            } else {
+                mDiabeteReadingEntity.setFasting(false);
             }
-            mDiabeteReadingEntity.setEaten2h(false);
+
         });
 
         binding.activityDataReaderSwitchFasting.setOnToggledListener((toggleableView, isOn) -> {
             if(isOn) {
                 binding.activityDataReaderSwitchEatenBy.setOn(false);
-                mDiabeteReadingEntity.setEaten2h(true);
+                mDiabeteReadingEntity.setFasting(true);
             }
-            mDiabeteReadingEntity.setFasting(false);
+            else {
+                mDiabeteReadingEntity.setEaten2h(false);
+            }
+
         });
 
     }
@@ -209,19 +203,25 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                 mDiabeteReadingEntity.setValue(Float.parseFloat(binding.activityDataReaderInputRead.getText().toString()));
             }
             else {
-                // todo: message
+                Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
             }
 
-            mUserViewModel.getUser()
+            mDisposable.add(mUserViewModel.getUser()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe( userEntity -> {
 
-                        UserEntity user = userEntity;
+                        if(userEntity == null) {
+                            Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
+                        }
+
+                        // add reading
+
+                        UserEntity tmpUser = userEntity;
                         List<DiabeteReadingEntity> tmp;
 
-                        if(user.getReadings() != null) {
-                            tmp = user.getReadings();
+                        if(tmpUser.getReadings() != null) {
+                            tmp = tmpUser.getReadings();
                         }
                         else {
                             tmp = new ArrayList<>();
@@ -229,12 +229,13 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                         mDiabeteReadingEntity.setTags(mSelectedTags);
 
                         tmp.add(mDiabeteReadingEntity);
-                        user.setReadings(tmp);
+                        tmpUser.setReadings(tmp);
 
                         if(blockObserver) {
+                            // update user to ROOM
                             blockObserver = false;
 
-                            mUserViewModel.insertUser(user)
+                            mDisposable.add(mUserViewModel.insertUser(tmpUser)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe( () -> {
@@ -242,20 +243,12 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
 
                                         onBackPressed();
                                     }, throwable -> {
-                                        // Log.e(TAG, "Unable to update username", throwable);
-                                    });
-                        }else {
-                            int k = 1;
+                                        Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
+                                    }));
                         }
                     }, throwable -> {
-                        int x = 1;
-                    });
+                        Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
+                    }));
         });
     }
 }
-
-/**
- mItemTags.add(new TagsEntity(1, "Pranzo", ""));
- mItemTags.add(new TagsEntity(2, "Cena", ""));
- mItemTags.add(new TagsEntity(3, "Cioccolata", ""));
- */

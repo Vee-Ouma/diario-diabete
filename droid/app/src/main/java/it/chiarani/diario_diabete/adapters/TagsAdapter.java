@@ -34,11 +34,11 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView txt;
+        TextView txtDescription;
         RelativeLayout rl;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt = itemView.findViewById(R.id.tagsItemText);
+            txtDescription = itemView.findViewById(R.id.tagsItemText);
             rl = itemView.findViewById(R.id.tagsItemRl);
             itemView.setOnClickListener(this);
         }
@@ -65,15 +65,15 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TagsAdapter.ViewHolder holder, int position) {
-        holder.txt.setText(mItems.get(position).getValue());
+        holder.txtDescription.setText(mItems.get(position).getValue());
 
         if(mPositionToColor.contains(position)) {
             holder.rl.setBackgroundResource(R.drawable.background_azure_rectangle_button);
-            holder.txt.setTextColor(holder.itemView.getResources().getColor(R.color.colorWhite));
+            holder.txtDescription.setTextColor(holder.itemView.getResources().getColor(R.color.appColorBlack));
         }
         else {
             holder.rl.setBackgroundResource(R.drawable.background_white_rectangle_button);
-            holder.txt.setTextColor(holder.itemView.getResources().getColor(R.color.colorLightGray));
+            holder.txtDescription.setTextColor(holder.itemView.getResources().getColor(R.color.appColorGray));
         }
     }
 

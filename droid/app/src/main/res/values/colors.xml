@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1D2D44</color>
+    <color name="colorPrimary">@color/appColorDarkAzure</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#3E94C1</color>
+    <color name="colorAccent">@color/appColorDarkAzure</color>
 
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorBlack">#000000</color>
+    <color name="appColorBlack">#000000</color>
+    <color name="appColorLightAzure">#E5F3FA</color>
+    <color name="appColorDarkAzure">#1B3667</color>
+    <color name="appColorLightGreen">#B8D4AE</color>
+    <color name="appColorOrange">#E6794B</color>
+    <color name="appColorWhite">#FFFFFF</color>
+    <color name="appColorGray">#6D7478</color>
 
-    <color name="colorLightRed">#EF9380</color>
-    <color name="colorLightGreen">#B8D4AE</color>
-    <color name="colorLightBlue">#0095C6</color>
-    <color name="colorLightGray">#676E7A</color>
-    <color name="colorLightAzure">#3E94C1</color>
-
-    <color name="colorIcGray">#4D4E4D</color>
-
-    <color name="readingItemBlueNavy">#286CDB</color>
 </resources>

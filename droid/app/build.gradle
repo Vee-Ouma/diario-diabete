@@ -73,6 +73,14 @@ dependencies {
     // GraphView
     // https://github.com/jjoe64/GraphView
     implementation 'com.jjoe64:graphview:4.2.2'
+
+    // Google Oauth
+    // https://developers.google.com/identity/sign-in/android/start-integrating
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    // Spotlight
+    // https://github.com/TakuSemba/Spotlight
+    implementation 'com.github.takusemba:spotlight:1.8.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

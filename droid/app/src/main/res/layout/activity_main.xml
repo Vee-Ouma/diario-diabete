@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite"
+        android:background="@color/appColorWhite"
         tools:context=".views.MainActivity">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -18,40 +18,47 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
                 <com.jjoe64.graphview.GraphView
-                    android:id="@+id/graph"
+                    android:id="@+id/activityMainGraph"
                     android:layout_width="match_parent"
                     android:layout_height="200dip"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="85dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/readingItemReadingValue"
-
+                    android:id="@+id/activityMainLatestReadings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="79dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="64dp"
                     android:elevation="1dp"
                     android:text="Ultime letture"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/appColorBlack"
                     android:textSize="22sp"
                     app:fontFamily="@font/product_sans_bold"
-                    app:layout_constraintBottom_toTopOf="@+id/rv"
-                    app:layout_constraintEnd_toStartOf="@+id/title1"
-                    app:layout_constraintHorizontal_bias="0.202"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activityMainTxtWelcome" />
+
+                <ImageView
+                    android:id="@+id/activityMainImgViewNotification"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_alarm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/readingItemReadingValue3"
-
+                    android:id="@+id/activityMainTxtWelcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -60,17 +67,16 @@
                     android:layout_marginTop="24dp"
                     android:elevation="1dp"
                     android:text="Bentornato Fabio!"
-                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/appColorBlack"
                     android:textSize="22sp"
                     app:fontFamily="@font/product_sans_bold"
-                    app:layout_constraintEnd_toStartOf="@+id/title1"
                     app:layout_constraintHorizontal_bias="0.195"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/readingItemReadingValue2"
-
+                    android:id="@+id/activityMainTxtGraph"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -79,43 +85,42 @@
                     android:layout_marginBottom="9dp"
                     android:elevation="1dp"
                     android:text="Andamento"
-                    android:textColor="@color/colorBlack"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/appColorBlack"
                     android:textSize="22sp"
                     app:fontFamily="@font/product_sans_bold"
-                    app:layout_constraintBottom_toTopOf="@+id/graph"
-                    app:layout_constraintEnd_toStartOf="@+id/title1"
+                    app:layout_constraintBottom_toTopOf="@+id/activityMainGraph"
                     app:layout_constraintHorizontal_bias="0.195"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title1"
+                    android:id="@+id/activityMainTxtViewAllReadings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="22dp"
                     android:elevation="1dp"
                     android:text="vedi tutte >"
-                    android:textColor="@color/colorLightGray"
+                    android:textColor="@color/appColorGray"
                     android:textSize="18sp"
                     app:fontFamily="@font/product_sans_bold"
-                    app:layout_constraintBottom_toTopOf="@+id/rv"
+                    app:layout_constraintBottom_toTopOf="@id/activityMainRvReadings"
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-
-                    android:id="@+id/rv"
+                    android:id="@+id/activityMainRvReadings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal"
                     android:scrollbars="none"
-                    app:layout_constraintBottom_toTopOf="@+id/readingItemReadingValue2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activityMainLatestReadings">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -135,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:tint="@null"
-                app:backgroundTint="@color/colorWhite"
+                app:backgroundTint="@color/appColorWhite"
                 android:src="@drawable/ic_gplus"
                 app:layout_anchor="@id/bottomAppBar"/>
 

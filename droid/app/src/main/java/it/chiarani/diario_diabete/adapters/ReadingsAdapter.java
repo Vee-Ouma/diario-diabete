@@ -41,18 +41,13 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txtValue, txtDescription, txtDateTime;
-        RecyclerView rvTags;
-        ImageView imgTextDraw;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtValue = itemView.findViewById(R.id.readingItemReadingValue);
-          //  rvTags = itemView.findViewById(R.id.rvTest);
-          //  imgTextDraw = itemView.findViewById(R.id.readingItemImgGlucometer);
             txtDescription = itemView.findViewById(R.id.readingItemDescr);
             txtDateTime = itemView.findViewById(R.id.readingItemDate);
             itemView.setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View v) {
@@ -67,6 +62,7 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
         holder.txtDateTime.setText(String.format("%s", mItems.get(position).getReadingDate().substring(0,5)));
         holder.txtDescription.setText("N");
 
+
         if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {
            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
            holder.txtDescription.setText("P");
@@ -76,24 +72,6 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
             holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
             holder.txtDescription.setText("D");
         }
-
-
-/*
-
-        holder.txtDateTime.setText(String.format("%s %s", mItems.get(position).getReadingHour(), mItems.get(position).getReadingDate()));
-
-
-      //  holder.imgTextDraw.setImageDrawable(drawable);
-
-        LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(mContext);
-        linearLayoutManagerTags.setOrientation(RecyclerView.HORIZONTAL);
-        linearLayoutManagerTags.setReverseLayout(true);
-
-        TagsAdapter adapterTags = new TagsAdapter(mItems.get(position).getTags(), null);
-
-        holder.rvTags.setAdapter(adapterTags);
-        holder.rvTags.setLayoutManager(linearLayoutManagerTags);*/
-
     }
 
 
