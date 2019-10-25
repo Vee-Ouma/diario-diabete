@@ -20,7 +20,7 @@
             android:textSize="@dimen/tagsItemTextSize"
             android:text="1"
             android:padding="4dp"
-            android:textColor="@color/appColorGray"
+            android:textColor="?appColorGray"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"/>
     </RelativeLayout>

@@ -61,6 +61,7 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
     public void onBindViewHolder(@NonNull ReadingsDetailsAdapter.ViewHolder holder, int position) {
         holder.txtValue.setText(String.format("%s", mItems.get(position).getValue()));
         holder.txtDate.setText(String.format("%s", mItems.get(position).getReadingDate().substring(0,5)));
+
         holder.txtDescription.setText("Normale");
 
         holder.txtFasting.setText("Digiuno");
@@ -69,13 +70,13 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
         }
 
 
-        if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {
-           holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+        if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {// https://stackoverflow.com/questions/29041027/android-getresources-getdrawable-deprecated-api-22
+           holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
            holder.txtDescription.setText("Pre-Diabete");
 
         }
         else if (mItems.get(position).getValue() >= 125) {
-            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
             holder.txtDescription.setText("Diabete");
         }
 

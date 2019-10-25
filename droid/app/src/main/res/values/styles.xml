@@ -2,10 +2,18 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">?appColorWhite</item>
+        <item name="colorPrimaryDark">?appColorDarkAzure</item>
+        <item name="colorAccent">?appColorDarkAzure</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
+        <item name="appColorBlack">#000000</item>
+        <item name="appColorLightAzure">#E5F3FA</item>
+        <item name="appColorDarkAzure">#1B3667</item>
+        <item name="appColorLightGreen">#B8D4AE</item>
+        <item name="appColorOrange">#E6794B</item>
+        <item name="appColorWhite">#FFFFFF</item>
+        <item name="appColorGray">#6D7478</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme"
@@ -17,4 +25,19 @@
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/background_white_button</item>
     </style>
+
+    <!-- Dark application theme. -->
+    <!-- TODO: improve colors using defaults colors guide: https://material.io/develop/android/theming/color/ -->
+    <style name="AppDarkTheme" parent="AppTheme">
+        <item name="colorPrimary">?appColorWhite</item>
+
+        <item name="appColorBlack">#000000</item>
+        <item name="appColorLightAzure">#000000</item>
+        <item name="appColorDarkAzure">#000000</item>
+        <item name="appColorLightGreen">#000000</item>
+        <item name="appColorOrange">#000000</item>
+        <item name="appColorWhite">#000000</item>
+        <item name="appColorGray">#000000</item>
+    </style>
+
 </resources>

@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/appColorDarkAzure</color>
+    <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">@color/appColorDarkAzure</color>
-
-    <color name="appColorBlack">#000000</color>
-    <color name="appColorLightAzure">#E5F3FA</color>
-    <color name="appColorDarkAzure">#1B3667</color>
-    <color name="appColorLightGreen">#B8D4AE</color>
-    <color name="appColorOrange">#E6794B</color>
-    <color name="appColorWhite">#FFFFFF</color>
-    <color name="appColorGray">#6D7478</color>
-
+    <color name="colorAccent">#000000</color>
 </resources>

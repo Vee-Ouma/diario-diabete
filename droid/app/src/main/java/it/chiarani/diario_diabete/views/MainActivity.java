@@ -1,11 +1,18 @@
 package it.chiarani.diario_diabete.views;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.AttributeSet;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -63,6 +70,9 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.setTheme(R.style.AppTheme);
+        //this.setTheme(R.style.AppDarkTheme);
+
         super.onCreate(savedInstanceState);
 
         this.setSupportActionBar(binding.bottomAppBar);
@@ -74,16 +84,27 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         // btn listeners
         binding.activityMainTxtViewAllReadings.setOnClickListener(view -> launchActivity(ReadingDetailActivity.class) );
         binding.fab.setOnClickListener(view -> launchActivity(DataReaderActivity.class) );
+
+        //this.setTheme(R.style.AppTheme);
+      //  this.setTheme(R.style.AppDarkTheme);
+
+       /* SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String currentTheme = sharedPref.getString("theme", "light");
+        if (currentTheme.equals("light")) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("theme","dark");
+            editor.apply();
+
+            this.setTheme(R.style.AppTheme);
+        } else {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("theme","light");
+            editor.apply();
+            this.setTheme(R.style.AppDarkTheme);
+        }*/
+
+
     }
-
-
-    private void setBottomAppBarHamburgerListener() {
-        binding.bottomAppBar.setNavigationOnClickListener(view -> {
-            BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
-            bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
-        });
-    }
-
 
     @Override
     protected void onStop() {
@@ -118,7 +139,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
 
     @Override
     public void onItemClick(int position) {
-
         mDisposable.add(mUserViewModel.getUser()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -132,6 +152,14 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
                 Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
             }));
     }
+
+    private void setBottomAppBarHamburgerListener() {
+        binding.bottomAppBar.setNavigationOnClickListener(view -> {
+            BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
+            bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
+        });
+    }
+
 
     private void setUI() {
 
@@ -219,9 +247,9 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         ReadingsAdapter adapterTags;
 
         if(userEntity.getReadings().size() > MAX_VIEW_READINGS) {
-            adapterTags = new ReadingsAdapter(userEntity.getReadings().subList(0,MAX_VIEW_READINGS-1), this);
+            adapterTags = new ReadingsAdapter(userEntity.getReadings().subList(0,MAX_VIEW_READINGS-1), this::onItemClick);
         } else {
-            adapterTags = new ReadingsAdapter(userEntity.getReadings(), this);
+            adapterTags = new ReadingsAdapter(userEntity.getReadings(), this::onItemClick);
         }
 
         binding.activityMainRvReadings.setAdapter(adapterTags);

@@ -64,12 +64,12 @@ public class ReadingsAdapter extends RecyclerView.Adapter<ReadingsAdapter.ViewHo
 
 
         if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {
-           holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+           holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
            holder.txtDescription.setText("P");
 
         }
         else if (mItems.get(position).getValue() >= 125) {
-            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button));
+            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
             holder.txtDescription.setText("D");
         }
     }

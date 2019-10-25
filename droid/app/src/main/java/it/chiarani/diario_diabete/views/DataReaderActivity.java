@@ -199,6 +199,17 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
 
     protected void setConfirmDiabeteReadingListener() {
         binding.activityDataReaderConfirm.setOnClickListener(v -> {
+
+            if(binding.activityDataReaderInputRead.getText() != null && binding.activityDataReaderInputRead.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Inserisci prima un valore di glicemia", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if(!mDiabeteReadingEntity.isEaten2h() && !mDiabeteReadingEntity.isFasting()) {
+                Toast.makeText(this, "Specifica una clausola digiuno prima", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             if(binding.activityDataReaderInputRead.getText() != null) {
                 mDiabeteReadingEntity.setValue(Float.parseFloat(binding.activityDataReaderInputRead.getText().toString()));
             }

@@ -1,5 +1,6 @@
 package it.chiarani.diario_diabete.adapters;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,11 +70,19 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
         if(mPositionToColor.contains(position)) {
             holder.rl.setBackgroundResource(R.drawable.background_azure_rectangle_button);
-            holder.txtDescription.setTextColor(holder.itemView.getResources().getColor(R.color.appColorBlack));
+            TypedValue typedValue = new TypedValue();
+            holder.itemView.getContext().getTheme().resolveAttribute(R.attr.appColorBlack, typedValue, true);
+            int color = typedValue.data;
+            holder.txtDescription.setTextColor(color);
         }
         else {
             holder.rl.setBackgroundResource(R.drawable.background_white_rectangle_button);
-            holder.txtDescription.setTextColor(holder.itemView.getResources().getColor(R.color.appColorGray));
+
+            TypedValue typedValue = new TypedValue();
+            holder.itemView.getContext().getTheme().resolveAttribute(R.attr.appColorGray, typedValue, true);
+            int color = typedValue.data;
+            holder.txtDescription.setTextColor(color);
+
         }
     }
 

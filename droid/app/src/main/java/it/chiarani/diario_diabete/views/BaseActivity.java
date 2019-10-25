@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import it.chiarani.diario_diabete.R;
+
 /**
  * Sample activity to extends
  */
