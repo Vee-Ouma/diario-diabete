@@ -38,10 +38,10 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtValue = itemView.findViewById(R.id.readingDetailItemValue);
-            txtDescription = itemView.findViewById(R.id.readingDetailItemDescription);
+            //txtDescription = itemView.findViewById(R.id.readingDetailItemDescription);
             txtDate = itemView.findViewById(R.id.readingDetailItemHour);
             txtTime = itemView.findViewById(R.id.readingDetailItemTime);
-            txtFasting = itemView.findViewById(R.id.readingDetailItemFasting);
+            //txtFasting = itemView.findViewById(R.id.readingDetailItemFasting);
             itemView.setOnClickListener(this);
         }
 
@@ -62,9 +62,9 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
         holder.txtValue.setText(String.format("%s", mItems.get(position).getValue()));
         holder.txtDate.setText(String.format("%s", mItems.get(position).getReadingDate().substring(0,5)));
 
-        holder.txtDescription.setText("Normale");
+       // holder.txtDescription.setText("Normale");
 
-        holder.txtFasting.setText("Digiuno");
+       /* holder.txtFasting.setText("Digiuno");
         if(mItems.get(position).isEaten2h()) {
             holder.txtFasting.setText("Mangiato da 2h");
         }
@@ -78,7 +78,7 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
         else if (mItems.get(position).getValue() >= 125) {
             holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
             holder.txtDescription.setText("Diabete");
-        }
+        }*/
 
     }
 
