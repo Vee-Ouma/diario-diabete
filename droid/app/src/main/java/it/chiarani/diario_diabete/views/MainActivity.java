@@ -35,6 +35,7 @@ import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.adapters.ReadingItemClickListener;
 import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
+import it.chiarani.diario_diabete.adapters.ReadingsDetailsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
 import it.chiarani.diario_diabete.db.Injection;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
@@ -189,7 +190,7 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
                     dataPoints[i] = new DataPoint(d1, userEntity.getReadings().get(i).getValue());
                 }
                 LineGraphSeries<DataPoint> base = new LineGraphSeries<>(dataPoints);
-
+/*
                 binding.activityMainGraph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
                 binding.activityMainGraph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
                 binding.activityMainGraph.getGridLabelRenderer().setVerticalLabelsVisible(true);
@@ -202,7 +203,7 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
                 binding.activityMainGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
 
                 binding.activityMainGraph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
-
+*/
 
                 // set list of recent readings
                 setReadingList(userEntity);
@@ -239,17 +240,17 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
 
     private void setReadingList(UserEntity userEntity) {
         LinearLayoutManager linearLayoutManagerTags = new LinearLayoutManager(this);
-        linearLayoutManagerTags.setOrientation(RecyclerView.HORIZONTAL);
+        linearLayoutManagerTags.setOrientation(RecyclerView.VERTICAL);
 
         binding.activityMainRvReadings.setLayoutManager(linearLayoutManagerTags);
 
         Collections.reverse(userEntity.getReadings());
-        ReadingsAdapter adapterTags;
+        ReadingsDetailsAdapter adapterTags;
 
         if(userEntity.getReadings().size() > MAX_VIEW_READINGS) {
-            adapterTags = new ReadingsAdapter(userEntity.getReadings().subList(0,MAX_VIEW_READINGS-1), this::onItemClick);
+            adapterTags = new ReadingsDetailsAdapter(userEntity.getReadings().subList(0,MAX_VIEW_READINGS-1), this::onItemClick);
         } else {
-            adapterTags = new ReadingsAdapter(userEntity.getReadings(), this::onItemClick);
+            adapterTags = new ReadingsDetailsAdapter(userEntity.getReadings(), this::onItemClick);
         }
 
         binding.activityMainRvReadings.setAdapter(adapterTags);

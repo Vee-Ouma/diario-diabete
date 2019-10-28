@@ -40,6 +40,26 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/readingDetailItemHour2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:elevation="1dp"
+            android:fontFamily="@font/product_sans_regular"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="mg/dl."
+            android:textColor="?appColorDarkAzure"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/readingDetailItemValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/readingDetailItemValue" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/readingDetailItemTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,14 +80,15 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/readingItemImgGlucometer"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
             android:adjustViewBounds="true"
             android:background="@drawable/background_azure_button"
             android:cropToPadding="true"
+            android:padding="3dp"
             android:scaleType="fitStart"
             android:src="@drawable/ic_blood"
             app:layout_constraintBottom_toBottomOf="parent"
