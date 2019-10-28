@@ -41,6 +41,7 @@ import it.chiarani.diario_diabete.db.Injection;
 import it.chiarani.diario_diabete.db.persistence.entities.TagsEntity;
 import it.chiarani.diario_diabete.db.persistence.entities.UserEntity;
 import it.chiarani.diario_diabete.fragments.BottomNavigationDrawerFragment;
+import it.chiarani.diario_diabete.fragments.GraphFragment;
 import it.chiarani.diario_diabete.fragments.ReadingDetailFragment;
 import it.chiarani.diario_diabete.viewmodels.UserViewModel;
 import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
@@ -85,6 +86,11 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         // btn listeners
         binding.activityMainTxtViewAllReadings.setOnClickListener(view -> launchActivity(ReadingDetailActivity.class) );
         binding.fab.setOnClickListener(view -> launchActivity(DataReaderActivity.class) );
+
+        binding.activityMainTxtGraph.setOnClickListener( view -> {
+            GraphFragment bottomSheetDialogFragment = new GraphFragment();
+            bottomSheetDialogFragment.show(getSupportFragmentManager(), "graph_fragment");
+        });
 
         //this.setTheme(R.style.AppTheme);
       //  this.setTheme(R.style.AppDarkTheme);
