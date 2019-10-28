@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -72,8 +73,8 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.setTheme(R.style.AppTheme);
-        //this.setTheme(R.style.AppDarkTheme);
+        //this.setTheme(R.style.AppTheme);
+        this.setTheme(R.style.AppDarkTheme);
 
         super.onCreate(savedInstanceState);
 
@@ -110,7 +111,11 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
             this.setTheme(R.style.AppDarkTheme);
         }*/
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().setStatusBarColor(Color.parseColor("#1C1C27"));
 
+        //setStatusBarColor(findViewById(R.id.statusBarBackground),getResources().getColor(android.R.color.white));
     }
 
     @Override
@@ -136,7 +141,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
                 }
 
                 // set list of recent readings
-
                 setReadingList(userEntity);
             }, throwable -> {
                 Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();

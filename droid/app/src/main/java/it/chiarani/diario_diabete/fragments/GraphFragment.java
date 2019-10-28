@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -103,9 +104,15 @@ public class GraphFragment extends BottomSheetDialogFragment {
 
 
                 }, throwable -> {
-                    // update with default items
+                    Toast.makeText(view.getContext(), getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
                 }));
 
         return view;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mDisposable.dispose();
     }
 }

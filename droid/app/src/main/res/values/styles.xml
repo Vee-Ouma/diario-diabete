@@ -31,13 +31,13 @@
     <style name="AppDarkTheme" parent="AppTheme">
         <item name="colorPrimary">?appColorWhite</item>
 
-        <item name="appColorBlack">#000000</item>
-        <item name="appColorLightAzure">#000000</item>
-        <item name="appColorDarkAzure">#000000</item>
+        <item name="appColorBlack">#FAFAFC</item>
+        <item name="appColorLightAzure">#DEEEE9</item>
+        <item name="appColorDarkAzure">#8CDCE5</item>
         <item name="appColorLightGreen">#000000</item>
         <item name="appColorOrange">#000000</item>
-        <item name="appColorWhite">#000000</item>
-        <item name="appColorGray">#000000</item>
+        <item name="appColorWhite">#1C1C27</item>
+        <item name="appColorGray">#B6B6B6</item>
     </style>
 
 </resources>
