@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -73,10 +75,17 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //this.setTheme(R.style.AppTheme);
-        this.setTheme(R.style.AppDarkTheme);
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String currentTheme = sharedPref.getString("theme", "light");
+        if (currentTheme.equals("light")) {
+            this.setTheme(R.style.AppTheme);
+        } else {
+            this.setTheme(R.style.AppDarkTheme);
+        }
 
         super.onCreate(savedInstanceState);
+
 
         this.setSupportActionBar(binding.bottomAppBar);
 
@@ -93,29 +102,10 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
             bottomSheetDialogFragment.show(getSupportFragmentManager(), "graph_fragment");
         });
 
-        //this.setTheme(R.style.AppTheme);
-      //  this.setTheme(R.style.AppDarkTheme);
-
-       /* SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String currentTheme = sharedPref.getString("theme", "light");
-        if (currentTheme.equals("light")) {
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("theme","dark");
-            editor.apply();
-
-            this.setTheme(R.style.AppTheme);
-        } else {
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("theme","light");
-            editor.apply();
-            this.setTheme(R.style.AppDarkTheme);
-        }*/
-
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         getWindow().setStatusBarColor(Color.parseColor("#1C1C27"));
 
-        //setStatusBarColor(findViewById(R.id.statusBarBackground),getResources().getColor(android.R.color.white));
     }
 
     @Override
@@ -169,6 +159,14 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
             BottomNavigationDrawerFragment bottomSheetDialogFragment = new BottomNavigationDrawerFragment();
             bottomSheetDialogFragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog");
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.bottom_nav_drawer_menu, menu);
+        return true;
     }
 
 

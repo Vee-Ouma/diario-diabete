@@ -14,6 +14,8 @@
         <item name="appColorOrange">#E6794B</item>
         <item name="appColorWhite">#FFFFFF</item>
         <item name="appColorGray">#6D7478</item>
+        <item name="appBottomAppBar">#FFFFFF</item>
+
     </style>
 
     <style name="AppBottomSheetDialogTheme"
@@ -32,12 +34,13 @@
         <item name="colorPrimary">?appColorWhite</item>
 
         <item name="appColorBlack">#FAFAFC</item>
-        <item name="appColorLightAzure">#DEEEE9</item>
-        <item name="appColorDarkAzure">#8CDCE5</item>
-        <item name="appColorLightGreen">#000000</item>
+        <item name="appColorLightAzure">#F2EFE1</item>
+        <item name="appColorDarkAzure">#489DE2</item>
+        <item name="appColorLightGreen">#B8D4AE</item>
         <item name="appColorOrange">#000000</item>
-        <item name="appColorWhite">#1C1C27</item>
+        <item name="appColorWhite">#121C26</item>
         <item name="appColorGray">#B6B6B6</item>
+        <item name="appBottomAppBar">#F2EFE1</item>
     </style>
 
 </resources>

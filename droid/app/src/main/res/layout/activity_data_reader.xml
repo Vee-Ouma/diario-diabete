@@ -6,12 +6,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="?appColorWhite"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activityDataReaderHeaderCl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/activityDataReaderHeaderHeight"
+            android:background="?appColorWhite"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -43,7 +45,7 @@
                 android:drawablePadding="@dimen/main16"
                 android:fontFamily="@font/product_sans_bold"
                 android:gravity="center_horizontal|center_vertical"
-                android:textColor="@color/colorPrimary"
+                android:textColor="?appColorGray"
                 android:textSize="@dimen/activityDataReaderButtonTimePickerTextSize"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/activityDataReaderDatePicker"
@@ -153,7 +155,7 @@
             android:layout_marginTop="@dimen/activityDataReaderMT"
             android:fontFamily="@font/product_sans_regular"
             android:text="@string/activityDataReaderFasting"
-            android:textColor="#1D2D44"
+            android:textColor="?appColorBlack"
             android:textSize="@dimen/tileTextSize"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintHorizontal_bias="0.821"
@@ -169,7 +171,7 @@
             android:layout_marginTop="@dimen/activityDataReaderMT"
             android:fontFamily="@font/product_sans_regular"
             android:text="@string/activityDataReaderEatenBy"
-            android:textColor="#1D2D44"
+            android:textColor="?appColorBlack"
             android:textSize="@dimen/tileTextSize"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintHorizontal_bias="0.623"

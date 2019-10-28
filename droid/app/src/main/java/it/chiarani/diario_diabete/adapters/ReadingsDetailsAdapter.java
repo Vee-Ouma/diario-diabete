@@ -61,6 +61,7 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
     public void onBindViewHolder(@NonNull ReadingsDetailsAdapter.ViewHolder holder, int position) {
         holder.txtValue.setText(String.format("%s", mItems.get(position).getValue()));
         holder.txtDate.setText(String.format("%s", mItems.get(position).getReadingDate().substring(0,5)));
+        holder.txtTime.setText(String.format("%s", mItems.get(position).getReadingHour()));
 
        // holder.txtDescription.setText("Normale");
 

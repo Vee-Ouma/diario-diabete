@@ -7,4 +7,5 @@
     <attr name="appColorOrange" format="reference|color" />
     <attr name="appColorWhite" format="reference|color" />
     <attr name="appColorGray" format="reference|color" />
+    <attr name="appBottomAppBar" format="reference|color" />
 </resources>

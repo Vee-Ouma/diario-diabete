@@ -69,9 +69,9 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
         holder.txtDescription.setText(mItems.get(position).getValue());
 
         if(mPositionToColor.contains(position)) {
-            holder.rl.setBackgroundResource(R.drawable.background_azure_rectangle_button);
+            holder.rl.setBackgroundResource(R.drawable.background_azure_black_button);
             TypedValue typedValue = new TypedValue();
-            holder.itemView.getContext().getTheme().resolveAttribute(R.attr.appColorBlack, typedValue, true);
+            holder.itemView.getContext().getTheme().resolveAttribute(R.attr.appColorWhite, typedValue, true);
             int color = typedValue.data;
             holder.txtDescription.setTextColor(color);
         }

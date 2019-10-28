@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/bottomAppBar"
                 app:navigationIcon="@drawable/ic_menu"
-                android:backgroundTint="?appColorWhite"
+                android:backgroundTint="?appBottomAppBar"
                 style="@style/Widget.MaterialComponents.BottomAppBar"
                 android:layout_gravity="bottom" />
 
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:tint="@null"
-                app:backgroundTint="?appColorWhite"
+                app:backgroundTint="?appBottomAppBar"
                 android:src="@drawable/ic_gplus"
                 app:layout_anchor="@id/bottomAppBar"/>
 

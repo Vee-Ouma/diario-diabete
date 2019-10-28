@@ -3,7 +3,9 @@ package it.chiarani.diario_diabete.views;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
@@ -60,6 +62,15 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String currentTheme = sharedPref.getString("theme", "light");
+        if (currentTheme.equals("light")) {
+            this.setTheme(R.style.AppTheme);
+        } else {
+            this.setTheme(R.style.AppDarkTheme);
+        }
+
         super.onCreate(savedInstanceState);
 
         requestFocusOnTextInput();

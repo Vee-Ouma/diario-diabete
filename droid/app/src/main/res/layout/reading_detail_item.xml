@@ -40,7 +40,7 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/readingDetailItemHour2"
+            android:id="@+id/readingDetailItemUm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
