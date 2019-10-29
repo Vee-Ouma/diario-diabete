@@ -163,12 +163,9 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.bottom_nav_drawer_menu, menu);
-        return true;
+    public void onBackPressed() {
+        // nothing
     }
-
 
     private void setUI() {
 
