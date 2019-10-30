@@ -1,5 +1,7 @@
 package it.chiarani.diario_diabete.adapters;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,8 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
     private List<DiabeteReadingEntity> mItems;
     private final ReadingItemClickListener mOnClickListener;
     private Context mContext;
+    long DURATION = 300;
+    private boolean on_attach = true;
 
     public ReadingsDetailsAdapter(List<DiabeteReadingEntity> tagsList, ReadingItemClickListener mOnClickListener) {
         this.mItems = tagsList;
@@ -38,10 +42,8 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtValue = itemView.findViewById(R.id.readingDetailItemValue);
-            //txtDescription = itemView.findViewById(R.id.readingDetailItemDescription);
             txtDate = itemView.findViewById(R.id.readingDetailItemHour);
             txtTime = itemView.findViewById(R.id.readingDetailItemTime);
-            //txtFasting = itemView.findViewById(R.id.readingDetailItemFasting);
             itemView.setOnClickListener(this);
         }
 
@@ -62,25 +64,42 @@ public class ReadingsDetailsAdapter extends RecyclerView.Adapter<ReadingsDetails
         holder.txtValue.setText(String.format("%s", mItems.get(position).getValue()));
         holder.txtDate.setText(String.format("%s", mItems.get(position).getReadingDate().substring(0,5)));
         holder.txtTime.setText(String.format("%s", mItems.get(position).getReadingHour()));
+       // FromLeftToRight(holder.itemView, position);
+        setAnimation(holder.itemView, position);
 
-       // holder.txtDescription.setText("Normale");
+    }
 
-       /* holder.txtFasting.setText("Digiuno");
-        if(mItems.get(position).isEaten2h()) {
-            holder.txtFasting.setText("Mangiato da 2h");
+    // https://medium.com/better-programming/android-recyclerview-with-beautiful-animations-5e9b34dbb0fa
+    private void setAnimation(View itemView, int i) {
+        if(!on_attach){
+            i = -1;
         }
+        boolean isNotFirstItem = i == -1;
+        i++;
+        itemView.setAlpha(0.f);
+        AnimatorSet animatorSet = new AnimatorSet();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(itemView, "alpha", 0.f, 0.5f, 1.0f);
+        ObjectAnimator.ofFloat(itemView, "alpha", 0.f).start();
+        animator.setStartDelay(isNotFirstItem ? DURATION / 2 : (i * DURATION / 3));
+        animator.setDuration(500);
+        animatorSet.play(animator);
+        animator.start();
+    }
 
 
-        if(mItems.get(position).getValue() > 100 && mItems.get(position).getValue() < 125) {// https://stackoverflow.com/questions/29041027/android-getresources-getdrawable-deprecated-api-22
-           holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
-           holder.txtDescription.setText("Pre-Diabete");
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
 
-        }
-        else if (mItems.get(position).getValue() >= 125) {
-            holder.txtDescription.setBackground(mContext.getResources().getDrawable(R.drawable.background_orange_button, mContext.getTheme()));
-            holder.txtDescription.setText("Diabete");
-        }*/
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
 
+                on_attach = false;
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+
+        super.onAttachedToRecyclerView(recyclerView);
     }
 
 

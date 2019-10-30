@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
     private ActivityMainBinding binding;
     private UserViewModel mUserViewModel;
     private final CompositeDisposable mDisposable = new CompositeDisposable();
-    private final int MAX_VIEW_READINGS = 7;
+    private final int MAX_VIEW_READINGS = 15;
 
 
     @Override
@@ -146,7 +146,7 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
             .subscribe( userEntity -> {
 
                 Collections.reverse(userEntity.getReadings());
-                ReadingDetailFragment fragment = new ReadingDetailFragment(userEntity.getReadings().get(position));
+                ReadingDetailFragment fragment = new ReadingDetailFragment(position);
                 fragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog1");
 
             }, throwable -> {
@@ -177,38 +177,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
                 if(userEntity.getReadings() == null) {
                     return;
                 }
-
-                // build graph
-                // TODO: improve here
-                DataPoint[] dataPoints = new DataPoint[userEntity.getReadings().size()];
-
-                for (int i = 0; i < userEntity.getReadings().size(); i++) {
-                    Calendar calendar = Calendar.getInstance();
-                    String giorno   = userEntity.getReadings().get(i).getReadingDate().split("/")[0];
-                    String mese     = userEntity.getReadings().get(i).getReadingDate().split("/")[1];
-                    String anno     = userEntity.getReadings().get(i).getReadingDate().split("/")[2];
-                    String ora      = userEntity.getReadings().get(i).getReadingHour().split(":")[0];
-                    String min      = userEntity.getReadings().get(i).getReadingHour().split(":")[1];
-                    calendar.set(Integer.parseInt(anno),Integer.parseInt(mese), Integer.parseInt(giorno), Integer.parseInt(ora), Integer.parseInt(min));
-                    Date d1 = calendar.getTime();
-                    // add new DataPoint object to the array for each of your list entries
-                    dataPoints[i] = new DataPoint(d1, userEntity.getReadings().get(i).getValue());
-                }
-                LineGraphSeries<DataPoint> base = new LineGraphSeries<>(dataPoints);
-/*
-                binding.activityMainGraph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
-                binding.activityMainGraph.getGridLabelRenderer().setHorizontalLabelsVisible(true);
-                binding.activityMainGraph.getGridLabelRenderer().setVerticalLabelsVisible(true);
-                binding.activityMainGraph.getGridLabelRenderer().setHorizontalLabelsColor(Color.parseColor("#bab2ec")); // TODO: color
-                binding.activityMainGraph.getGridLabelRenderer().setVerticalLabelsColor(Color.parseColor("#bab2ec"));
-
-                binding.activityMainGraph.addSeries(base);
-
-                // set date label formatter
-                binding.activityMainGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-
-                binding.activityMainGraph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
-*/
 
                 // set list of recent readings
                 setReadingList(userEntity);
@@ -261,6 +229,5 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         binding.activityMainRvReadings.setAdapter(adapterTags);
     }
 }
-
 
 // https://medium.com/over-engineering/hands-on-with-material-components-for-android-bottom-app-bar-28835a1feb82
