@@ -19,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.databinding.FragmentBottomNavigationDrawerBinding;
+import it.chiarani.diario_diabete.views.InfoActivity;
 import it.chiarani.diario_diabete.views.MainActivity;
 
 public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
@@ -50,9 +51,18 @@ public class BottomNavigationDrawerFragment extends BottomSheetDialogFragment {
 
                     Intent intent = new Intent(view.getContext(), MainActivity.class);
                     startActivity(intent);
+                    this.dismiss();
+                    return true;
+                }
+                case R.id.bottom_menu_info : {
+                    Intent intent = new Intent(getContext(), InfoActivity.class);
+                    startActivity(intent);
+                    this.dismiss();
+                    return true;
                 }
                 default: return true;
             }
+
         });
 
         return  view;

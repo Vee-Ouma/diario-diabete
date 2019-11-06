@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?appColorWhite"
+    android:paddingLeft="16dp"
+    tools:context=".fragments.InfoFragment">
+
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical">
+       <androidx.appcompat.widget.AppCompatTextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="16dp"
+           android:elevation="1dp"
+           android:text="Open sources libraries:"
+           android:textColor="?appColorDarkAzure"
+           android:textSize="22sp"
+           app:fontFamily="@font/product_sans_regular"/>
+
+       <androidx.appcompat.widget.AppCompatTextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="16dp"
+           android:elevation="1dp"
+           android:text="Firebase SDK for Google Analytics"
+           android:textColor="?appColorBlack"
+           android:textSize="18sp"
+           app:fontFamily="@font/product_sans_regular"/>
+
+       <androidx.appcompat.widget.AppCompatTextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="16dp"
+           android:elevation="1dp"
+           android:text="https://firebase.google.com/terms/analytics"
+           android:textColor="?appColorGray"
+           android:textSize="13sp"
+           app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Firebase SDK for Crashlytics"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://firebase.google.com/terms/crashlytics-app-distribution-data-processing-terms"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="LiveData"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://developer.android.com/topic/libraries/architecture/livedata"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="RxJava"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/ReactiveX/RxJava/blob/3.x/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="RxAndroid"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/ReactiveX/RxAndroid/blob/2.x/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Room"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://developer.android.com/topic/libraries/architecture/room"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="GSON"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/google/gson/blob/master/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Toggle"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/Angads25/android-toggle/blob/release/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Toggle"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/googlearchive/android-RecyclerView/blob/master/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="TextDrawable"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/amulyakhare/TextDrawable/blob/master/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="GraphView"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/jjoe64/GraphView/blob/master/license.txt"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Spotlight"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://github.com/TakuSemba/Spotlight/blob/master/LICENSE"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Tab Layout"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://developer.android.com/reference/android/support/design/widget/TabLayout"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Icons in app"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://www.freepikcompany.com/legal#nav-flaticon-license"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="Illustrations in app"
+               android:textColor="?appColorBlack"
+               android:textSize="18sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="16dp"
+               android:elevation="1dp"
+               android:text="https://www.freepik.com"
+               android:textColor="?appColorGray"
+               android:textSize="13sp"
+               app:fontFamily="@font/product_sans_regular"/>
+
+
+
+
+       </LinearLayout>
+   </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

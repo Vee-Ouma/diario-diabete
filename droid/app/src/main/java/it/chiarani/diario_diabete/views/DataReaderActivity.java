@@ -185,7 +185,7 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
                         String time = hourOfDay + ":" + minute;
                         binding.activityDataReaderTimePicker.setText(time);
                         mDiabeteReadingEntity.setReadingHour(time);
-                    }, mHour, mMinute, false);
+                    }, mHour, mMinute, true);
             timePickerDialog.show();
         });
     }
@@ -211,6 +211,8 @@ public class DataReaderActivity extends BaseActivity implements ListItemClickLis
             }
 
         });
+
+        mDiabeteReadingEntity.setFasting(true);
 
     }
 

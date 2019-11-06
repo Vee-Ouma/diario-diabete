@@ -1,35 +1,21 @@
 package it.chiarani.diario_diabete.views;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,7 +24,6 @@ import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.adapters.FragmentCallbackListener;
 import it.chiarani.diario_diabete.adapters.ReadingItemClickListener;
-import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
 import it.chiarani.diario_diabete.adapters.ReadingsDetailsAdapter;
 import it.chiarani.diario_diabete.databinding.ActivityMainBinding;
 import it.chiarani.diario_diabete.db.Injection;
@@ -80,8 +65,15 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         String currentTheme = sharedPref.getString("theme", "light");
         if (currentTheme.equals("light")) {
             this.setTheme(R.style.AppTheme);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
         } else {
             this.setTheme(R.style.AppDarkTheme);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(Color.parseColor("#1C1C27"));
         }
 
         super.onCreate(savedInstanceState);
@@ -100,10 +92,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
             GraphFragment bottomSheetDialogFragment = new GraphFragment();
             bottomSheetDialogFragment.show(getSupportFragmentManager(), "graph_fragment");
         });
-
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        getWindow().setStatusBarColor(Color.parseColor("#1C1C27"));
 
     }
 

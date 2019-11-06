@@ -76,7 +76,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             holder.txtDescription.setTextColor(color);
         }
         else {
-            holder.rl.setBackgroundResource(R.drawable.background_white_button);
+            holder.rl.setBackgroundResource(R.drawable.background_white_rectangle_button);
 
             TypedValue typedValue = new TypedValue();
             holder.itemView.getContext().getTheme().resolveAttribute(R.attr.appColorGray, typedValue, true);

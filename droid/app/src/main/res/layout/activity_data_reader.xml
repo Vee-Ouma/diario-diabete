@@ -92,7 +92,7 @@
             android:layout_height="@dimen/activityDataReaderMT"
             android:layout_marginStart="18dp"
             android:layout_marginTop="32dp"
-            android:background="@drawable/background_white_button"
+            android:background="@drawable/background_white_rectangle_button"
             android:digits="0123456789."
             android:fontFamily="@font/product_sans_bold"
             android:gravity="start|center_vertical"
@@ -125,7 +125,7 @@
             app:colorOn="?appColorDarkAzure"
             app:colorOff="?appColorWhite"
             app:colorBorder='?appColorDarkAzure'
-            app:on="false"
+            app:on="true"
             app:textOff="@string/activityDataReaderSliderNo"
             app:textOn="@string/activityDataReaderSliderYes" />
 

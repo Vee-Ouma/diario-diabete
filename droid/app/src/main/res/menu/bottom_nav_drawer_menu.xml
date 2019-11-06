@@ -10,16 +10,8 @@
             android:icon="@drawable/ic_brightness"
             android:title="Tema Chiaro/Scuro" />
         <item
-            android:id="@+id/bottom_menu_settings"
-            android:icon="@drawable/ic_settings"
-            android:title="Impostazioni App" />
-        <item
             android:id="@+id/bottom_menu_info"
             android:icon="@drawable/ic_information"
             android:title="Informazioni" />
-        <item
-            android:id="@+id/bottom_menu_help"
-            android:icon="@drawable/ic_help"
-            android:title="Aiuto" />
     </group>
 </menu>

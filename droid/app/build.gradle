@@ -81,6 +81,9 @@ dependencies {
     // Spotlight
     // https://github.com/TakuSemba/Spotlight
     implementation 'com.github.takusemba:spotlight:1.8.0'
+
+    // Tab Layout
+    implementation 'com.android.support:design:28.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
