@@ -36,6 +36,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
+import it.chiarani.diario_diabete.adapters.FragmentCallbackListener;
 import it.chiarani.diario_diabete.adapters.ReadingItemClickListener;
 import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
 import it.chiarani.diario_diabete.adapters.ReadingsDetailsAdapter;
@@ -49,7 +50,7 @@ import it.chiarani.diario_diabete.fragments.ReadingDetailFragment;
 import it.chiarani.diario_diabete.viewmodels.UserViewModel;
 import it.chiarani.diario_diabete.viewmodels.ViewModelFactory;
 
-public class MainActivity extends BaseActivity implements ReadingItemClickListener {
+public class MainActivity extends BaseActivity implements ReadingItemClickListener, FragmentCallbackListener {
 
     private ActivityMainBinding binding;
     private UserViewModel mUserViewModel;
@@ -146,7 +147,7 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
             .subscribe( userEntity -> {
 
                 Collections.reverse(userEntity.getReadings());
-                ReadingDetailFragment fragment = new ReadingDetailFragment(position);
+                ReadingDetailFragment fragment = new ReadingDetailFragment(position, this::onFragmentClosed);
                 fragment.show(getSupportFragmentManager(), "bottom_nav_sheet_dialog1");
 
             }, throwable -> {
@@ -227,6 +228,11 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         }
 
         binding.activityMainRvReadings.setAdapter(adapterTags);
+    }
+
+    @Override
+    public void onFragmentClosed() {
+        this.onResume();
     }
 }
 

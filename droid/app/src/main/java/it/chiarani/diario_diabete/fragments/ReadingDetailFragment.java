@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import it.chiarani.diario_diabete.R;
+import it.chiarani.diario_diabete.adapters.FragmentCallbackListener;
 import it.chiarani.diario_diabete.adapters.ReadingsAdapter;
 import it.chiarani.diario_diabete.adapters.TagsAdapter;
 import it.chiarani.diario_diabete.databinding.FragmentReadingDetailBinding;
@@ -44,9 +46,11 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
     private UserViewModel mUserViewModel;
     private boolean blockObserver = true;
     private final CompositeDisposable mDisposable = new CompositeDisposable();
+    FragmentCallbackListener mListener;
 
-    public ReadingDetailFragment(int pos) {
+    public ReadingDetailFragment(int pos, FragmentCallbackListener listener) {
         this.pos = pos;
+        this.mListener = listener;
     }
 
 
@@ -125,6 +129,7 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe( () -> {
                                             int x = 1;
+                                            this.dismiss();
                                         }, throwable -> {
                                             // Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
                                         }));
@@ -145,4 +150,9 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
         return  view;
     }
 
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        mListener.onFragmentClosed();
+    }
 }
