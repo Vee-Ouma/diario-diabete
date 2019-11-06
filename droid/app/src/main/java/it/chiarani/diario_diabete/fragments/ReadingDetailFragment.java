@@ -128,7 +128,7 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
                                         .subscribeOn(Schedulers.io())
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe( () -> {
-                                            int x = 1;
+                                            mListener.onFragmentClosed();
                                             this.dismiss();
                                         }, throwable -> {
                                             // Toast.makeText(this, getString(R.string.txtGenericError), Toast.LENGTH_LONG).show();
@@ -150,9 +150,4 @@ public class ReadingDetailFragment extends BottomSheetDialogFragment {
         return  view;
     }
 
-    @Override
-    public void onDismiss(@NonNull DialogInterface dialog) {
-        super.onDismiss(dialog);
-        mListener.onFragmentClosed();
-    }
 }

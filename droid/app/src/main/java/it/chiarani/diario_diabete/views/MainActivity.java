@@ -57,7 +57,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
     private final CompositeDisposable mDisposable = new CompositeDisposable();
     private final int MAX_VIEW_READINGS = 15;
 
-
     @Override
     protected int getLayoutID() {
         return R.layout.activity_main;
@@ -86,7 +85,6 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
         }
 
         super.onCreate(savedInstanceState);
-
 
         this.setSupportActionBar(binding.bottomAppBar);
 
