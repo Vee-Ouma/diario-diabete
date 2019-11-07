@@ -1,12 +1,11 @@
 package it.chiarani.diario_diabete.views;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
 import androidx.databinding.DataBindingUtil;
 
 import it.chiarani.diario_diabete.R;
 import it.chiarani.diario_diabete.databinding.ActivityLoginBinding;
-
-import android.os.Bundle;
 
 public class LoginActivity extends BaseActivity {
 

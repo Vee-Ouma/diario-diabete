@@ -84,6 +84,9 @@ dependencies {
 
     // Tab Layout
     implementation 'com.android.support:design:28.1.0'
+
+    // Preferences android x
+    implementation 'androidx.preference:preference:1.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

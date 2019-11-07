@@ -62,5 +62,6 @@ public class InfoActivity extends BaseActivity {
         adapter.addFragment(new SettingsFragment(), "impostazioni");
         binding.activityInfoViewPager.setAdapter(adapter);
         binding.activityInfoTabLayout.setupWithViewPager(binding.activityInfoViewPager);
+
     }
 }
