@@ -15,7 +15,25 @@
         <item name="appColorWhite">#FFFFFF</item>
         <item name="appColorGray">#6D7478</item>
         <item name="appBottomAppBar">#FFFFFF</item>
+    </style>
 
+    <style name="PreferenceScreenDark" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textColorPrimary">#FAFAFC</item>
+        <item name="android:textColorSecondary">#FAFAFC</item>
+        <item name="android:textColorTertiary">#FAFAFC</item>
+        <item name="colorAccent">#FAFAFC</item>
+        <item name="android:textColor">#FAFAFC</item>
+        <item name="android:subtitleTextColor">#FAFAFC</item>
+    </style>
+
+
+    <style name="PreferenceScreenLight" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textColorPrimary">#121212</item>
+        <item name="android:textColorSecondary">#121212</item>
+        <item name="android:textColorTertiary">#121212</item>
+        <item name="colorAccent">#121212</item>
+        <item name="android:textColor">#121212</item>
+        <item name="android:subtitleTextColor">#121212</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme"
