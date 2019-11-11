@@ -1,10 +1,12 @@
 package it.chiarani.diario_diabete.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -14,9 +16,26 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.http.FileContent;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.ExponentialBackOff;
+import com.google.api.services.drive.Drive;
+import com.google.api.services.drive.DriveScopes;
+import com.google.api.services.drive.model.File;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -41,6 +60,8 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
     private UserViewModel mUserViewModel;
     private final CompositeDisposable mDisposable = new CompositeDisposable();
     private final int MAX_VIEW_READINGS = 15;
+    private Drive mService;
+    private final Executor mExecutor = Executors.newSingleThreadExecutor();
 
     @Override
     protected int getLayoutID() {
@@ -220,6 +241,8 @@ public class MainActivity extends BaseActivity implements ReadingItemClickListen
     public void onFragmentClosed() {
         this.onResume();
     }
+
+
 }
 
 // https://medium.com/over-engineering/hands-on-with-material-components-for-android-bottom-app-bar-28835a1feb82

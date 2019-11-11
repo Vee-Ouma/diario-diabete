@@ -6,14 +6,15 @@
 
     <SwitchPreferenceCompat
         android:key="darkTheme"
-        android:title="Abilita il tema scuro"/>
+        android:title="Abilita il tema scuro"
+        android:defaultValue="false"/>
 
     <Preference
         android:key="backupGoogle"
         android:title="Esporta i dati su Google Drive"/>
 
     <Preference
-        android:key="backupMan ual"
+        android:key="backupManual"
         android:title="Esporta i dati in formato CSV"/>
 
     <Preference
