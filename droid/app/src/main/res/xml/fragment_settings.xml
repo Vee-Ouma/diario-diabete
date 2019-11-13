@@ -5,35 +5,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreferenceCompat
-        android:key="darkTheme"
+        android:key="pref_key_darkTheme"
         android:title="Abilita il tema scuro"
         android:defaultValue="false"/>
 
     <Preference
-        android:key="backupGoogle"
-        android:title="Esporta i dati su Google Drive"/>
+        android:key="pref_key_backupGoogle"
+        android:title="Esporta i dati su Google Drive"
+        android:summary="Presto disponibile"
+        android:enabled="false"/>
 
     <Preference
-        android:key="backupManual"
+        android:key="pref_key_backupManual"
         android:title="Esporta i dati in formato CSV"/>
 
     <Preference
-        android:key="cleanCache"
-        android:title="Pulisci la cache del dispositivo"
-        android:summary="Questa azione eliminerà tutti i dati presenti nell'app"/>
-
-    <Preference
-        android:key="bugReport"
+        android:key="pref_key_bugReport"
         android:title="Segnalazione bug"
         android:summary="fabio@chiarani.it"/>
 
     <Preference
-        android:key="contactsWebsite"
+        android:key="pref_key_contactsWebsite"
         android:title="Sito web sviluppatore"
         android:summary="www.chiarani.it"/>
 
     <Preference
-        android:key="donations"
+        android:key="pref_key_donations"
         android:title="Offrimi un caffè"
         android:summary="Supporta il progetto con una donazione in maniera sicura attraverso paypal"/>
 
