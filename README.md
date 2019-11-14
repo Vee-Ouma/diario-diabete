@@ -7,7 +7,7 @@ At the moment the app has few features that will be introduced on the next relea
 #### Features:
 - [x] Insert a reading
 - [x] Remove a reading
-- [x] Graph
+- [x] Graphs
 - [x] White & Dark mode
 - [x] Simple CSV export
 - [ ] Statistics
