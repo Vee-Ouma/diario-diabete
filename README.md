@@ -1,4 +1,4 @@
-# diaro-diabete
+# diario-diabete
 
 The intent of this app is to allow you to quickly and easily record and monitor your glucometer readings instead of other apps on playstore.
 
