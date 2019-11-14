@@ -17,7 +17,7 @@ At the moment the app has few features that will be introduced on the next relea
 ### Screen:
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| <img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w1.jpg" height="200px">| <img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/b1.jpg" height="200px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w3.jpg" height="200px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/b2.jpg" height="200px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w2.jpg" height="200px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w4.jpg" height="200px"> |
+| <img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w1.jpg" height="250px">| <img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/b1.jpg" height="250px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w3.jpg" height="250px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/b2.jpg" height="250px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w2.jpg" height="250px"> |<img src="https://github.com/Xiryl/diaro-diabete/blob/dev/ot/w4.jpg" height="250px"> |
 
 ### PR:
 This app is under construction, atm pr will not be merged
